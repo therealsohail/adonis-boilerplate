@@ -39,12 +39,13 @@ class BaseValidator {
         'job_application_email.email': 'Application Email is not valid.',
         'status.equal': 'The application should be unapproved first',
         'status.required': 'Status is required',
-        'g-recaptcha-response.required': 'Please verify that you are not a bot.'
+        'g-recaptcha-response.required': 'Please verify that you are not a bot.',
+        'device_type.in': 'Device type should be in ios,android,web',
 
     }
 
     async fails(errorMessages) {
-        return this.ctx.response.status(422).send(errorMessages)
+        return this.ctx.response.status(422).send({status: false, error: errorMessages})
     }
 
     get validateAll() {

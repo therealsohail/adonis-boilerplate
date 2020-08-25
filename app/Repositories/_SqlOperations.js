@@ -20,20 +20,7 @@ class _SqlOperations {
     //Save a record
     async store(request, response) {
         let input = request.except instanceof Function ? request.except(['password_confirmation']) : request;
-        let modelObj = new this.model()
-
-        /*
-          *check if the input is not empty -> No need to check here, validator on route will take care of this
-        */
-
-        //assigning input data in db fields
-        _.forEach(input, function (e, i) {
-            modelObj[i] = e
-        })
-
-        await modelObj.save()
-
-        return modelObj
+        return await this.model.create(input)
     }
 
 

@@ -47,6 +47,9 @@ class ExceptionHandler extends BaseExceptionHandler {
             case "E_CANNOT_LOGIN":
                 myHelpers.httpAjaxResponse(request, response, "Already Logged in", '/login')
                 break
+            case "E_INVALID_JWT_REFRESH_TOKEN":
+                responseError = "Invalid refresh token"
+                break
 
         }
 
@@ -69,7 +72,7 @@ class ExceptionHandler extends BaseExceptionHandler {
                 break;
             default:
                 Logger.info(myHelpers.logMsg(errorBody))
-                return response.status(error.status).json({error:error.toString()})
+                return response.status(error.status).json({error: error.toString()})
 
         }
         return true

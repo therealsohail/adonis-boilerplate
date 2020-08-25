@@ -3,18 +3,18 @@
 const BaseModel = use('MongooseModel')
 
 /**
- * @class Test
+ * @class UserDevice
  */
-class Test extends BaseModel {
+class UserDevice extends BaseModel {
   static boot ({ schema }) {
     // Hooks:
     // this.addHook('preSave', () => {})
-    // this.addHook('preSave', 'TestHook.method')
+    // this.addHook('preSave', 'UserDeviceHook.method')
     // Indexes:
     // this.index({}, {background: true})
   }
   /**
-   * Test's schema
+   * UserDevice's schema
    */
   static get schema () {
     return {
@@ -24,8 +24,8 @@ class Test extends BaseModel {
 
   //Link Model and collection, in case where model name mismatch collection name
   static get schemaOptions() {
-    return { collection: 'Tests', };
+    return { collection: 'UserDevices', };
   }
 }
 
-module.exports = Test.buildModel('Test')
+module.exports = UserDevice.buildModel('UserDevice')

@@ -12,6 +12,16 @@ class UserRepository extends BaseRepository {
         this.#model = model
     }
 
+    async findByEmail(email) {
+        let user = await this.#model.query().where('email', email).first();
+        return user;
+    }
+
+    async show(id) {
+        let user = await this.#model.find(id);
+        return user;
+    }
+
     deleteAllUsers = () => this.#model.deleteMany({})
 
 }

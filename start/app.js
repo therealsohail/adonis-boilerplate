@@ -11,16 +11,16 @@
 |
 */
 const providers = [
-  '@adonisjs/framework/providers/AppProvider',
-  '@adonisjs/framework/providers/ViewProvider',
-  '@adonisjs/lucid/providers/LucidProvider',
-  '@adonisjs/bodyparser/providers/BodyParserProvider',
-  '@adonisjs/cors/providers/CorsProvider',
-  '@adonisjs/shield/providers/ShieldProvider',
-  '@adonisjs/session/providers/SessionProvider',
-  '@adonisjs/auth/providers/AuthProvider',
-  '@adonisjs/validator/providers/ValidatorProvider',
-  'adonis-mongoose-model/providers/MongooseProvider',
+    '@adonisjs/framework/providers/AppProvider',
+    '@adonisjs/framework/providers/ViewProvider',
+    '@adonisjs/lucid/providers/LucidProvider',
+    '@adonisjs/bodyparser/providers/BodyParserProvider',
+    '@adonisjs/cors/providers/CorsProvider',
+    '@adonisjs/shield/providers/ShieldProvider',
+    '@adonisjs/session/providers/SessionProvider',
+    '@adonisjs/auth/providers/AuthProvider',
+    '@adonisjs/validator/providers/ValidatorProvider',
+    'adonis-mongoose-model/providers/MongooseProvider',
 ]
 
 /*
@@ -33,7 +33,7 @@ const providers = [
 |
 */
 const aceProviders = [
-  '@adonisjs/lucid/providers/MigrationsProvider'
+    '@adonisjs/lucid/providers/MigrationsProvider'
 ]
 
 /*
@@ -49,16 +49,16 @@ const aceProviders = [
 |
 */
 const aliases = {
-  TaskModel : 'App/Models/Task',
+    TaskModel: 'App/Models/Task',
 
-  //Repositories
-  BaseRepository:'App/Repositories/BaseRepository',
-  UserRepository:'App/Repositories/UserRepository',
-  TaskRepository:'App/Repositories/TaskRepository',
+    //Repositories
+    BaseRepository: 'App/Repositories/BaseRepository',
+    UserRepository: 'App/Repositories/UserRepository',
+    TaskRepository: 'App/Repositories/TaskRepository',
 
-  //Controllers
-  BaseController: 'App/Controllers/Http/BaseController',
-  myHelpers: 'App/Helpers'
+    //Controllers
+    BaseController: 'App/Controllers/Http/BaseController',
+    myHelpers: 'App/Helpers'
 
 }
 
@@ -71,7 +71,7 @@ const aliases = {
 |
 */
 const commands = [
-  'App/Commands/Module'
+    'App/Commands/Module'
 ]
 
-module.exports = { providers, aceProviders, aliases, commands }
+module.exports = {providers, aceProviders, aliases, commands}

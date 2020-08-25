@@ -16,18 +16,25 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-
 Route.on('/').render('welcome')
 
 Route.group(() => {
     Route.resource('users', 'Api/UserController')
         .validator(new Map([
-            // [['users.store'], ['SaveUser']],
+            [['users.store'], ['SaveUser']],
             [['users.update'], ['UpdateUser']],
-            [['users.delete'], ['DeleteUser']]
+            //[['users.delete'], ['DeleteUser']]
         ]))
     Route.delete('delete-all-users', 'Api/UserController.deleteAllUsers')
+    Route.post('register', 'Api/UserController.register').validator('RegisterUser')
+    Route.post('login', 'Api/UserController.login').validator('Login')
+    Route.post('refreshToken', 'Api/UserController.refreshToken').validator('RefreshToken')
+    Route.post('imageUpload', 'Api/UserController.testNotification')
 }).prefix('api/v1/')
+
+Route.group(() => {
+    Route.resource('userdevice', 'Api/UserDeviceController')
+}).prefix('api/v1/').middleware(['auth'])
 
 
 Route.get('logout', async ({auth, response}) => {
@@ -35,8 +42,4 @@ Route.get('logout', async ({auth, response}) => {
     response.redirect('login')
 })
 
-Route.resource('test','Api/TestController')
-Route.resource('test','Api/TestController')
-Route.resource('test','Api/TestController')
-Route.resource('test','Api/TestController')
-Route.resource('test','Api/TestController')
+Route.resource('userdetail', 'Api/UserDetailController')
