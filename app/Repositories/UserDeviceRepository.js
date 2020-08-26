@@ -13,7 +13,10 @@ class UserDeviceRepository extends BaseRepository {
 
     async store(request, response) {
         const input = request.only(['user_id', 'device_type', 'device_token', 'push_notification'])
-        return await super.store(input, response)
+        return await this.model.findOrCreate(
+            {user_id: input.user_id, 'device_type': input.device_type, device_token: input.device_token},
+            input
+        )
     }
 
 }

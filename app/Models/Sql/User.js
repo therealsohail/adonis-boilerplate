@@ -57,32 +57,42 @@ class User extends Model {
     }
 
     getImageUrl({image}) {
-        let path = 'public/' + image
-        if (fs.existsSync(path)) {
-            return Env.get('APP_URL') + '/' + image
-        } else {
-            return Env.get('APP_URL') + '/thumbnail.jpg'
+        if (image != null && !image.startsWith("http")) {
+            let path = 'public/' + image
+            if (fs.existsSync(path)) {
+                return Env.get('APP_URL') + '/' + image
+            } else {
+                return Env.get('APP_URL') + '/thumbnail.jpg'
+            }
         }
+        return image;
     }
 
     getMediumImageUrl({image}) {
-        let path = 'public/' + image
-        let medium_image = image.split("/")
-        if (fs.existsSync(path)) {
-            return Env.get('APP_URL') + '/' + medium_image[0] + '/medium_' + medium_image[1]
-        } else {
-            return Env.get('APP_URL') + '/thumbnail.jpg'
+        if (image != null && !image.startsWith("http")) {
+            let medium_image = image.split("/")
+            let path = 'public/' + medium_image[0] + '/medium_' + medium_image[1]
+            if (fs.existsSync(path)) {
+                return Env.get('APP_URL') + '/' + medium_image[0] + '/medium_' + medium_image[1]
+            } else {
+                return Env.get('APP_URL') + '/thumbnail.jpg'
+            }
         }
+        return null;
+
     }
 
     getSmallImageUrl({image}) {
-        let path = 'public/' + image
-        let medium_image = image.split("/")
-        if (fs.existsSync(path)) {
-            return Env.get('APP_URL') + '/' + medium_image[0] + '/small_' + medium_image[1]
-        } else {
-            return Env.get('APP_URL') + '/thumbnail.jpg'
+        if (image != null && !image.startsWith("http")) {
+            let small_image = image.split("/")
+            let path = 'public/' + small_image[0] + '/small_' + small_image[1]
+            if (fs.existsSync(path)) {
+                return Env.get('APP_URL') + '/' + small_image[0] + '/small_' + small_image[1]
+            } else {
+                return Env.get('APP_URL') + '/thumbnail.jpg'
+            }
         }
+        return null;
     }
 
 }

@@ -28,8 +28,8 @@ Route.group(() => {
     Route.delete('delete-all-users', 'Api/UserController.deleteAllUsers')
     Route.post('register', 'Api/UserController.register').validator('RegisterUser')
     Route.post('login', 'Api/UserController.login').validator('Login')
-    Route.post('refreshToken', 'Api/UserController.refreshToken').validator('RefreshToken')
-    Route.post('imageUpload', 'Api/UserController.testNotification')
+    Route.post('refresh-token', 'Api/UserController.refreshToken').validator('RefreshToken')
+    Route.post('social-login', 'Api/UserController.socialLogin').validator('SocialLogin')
 }).prefix('api/v1/')
 
 Route.group(() => {

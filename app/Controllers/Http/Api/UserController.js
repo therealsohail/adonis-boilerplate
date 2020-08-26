@@ -37,6 +37,26 @@ class UserController extends BaseController {
         }
     }
 
+    async socialLogin({request, auth, response}) {
+        try {
+            let user = await userRepo.findSocialLogin(request)
+            if (user === null) {
+                let user = await userRepo.findByEmail(request.input('email'));
+                if (user === null) {
+                    let user = await userRepo.socialLogin(request, response)
+                } else {
+                    return response.status(403).json({status: false, error: "Email already exists"})
+                }
+            }
+            request._all.user_id = user.id;
+            await userDeviceRepo.store(request, response)
+            return this.respondWithToken(user, auth, response, 'Login Successfully.')
+
+        } catch (e) {
+            return response.status(403).json({status: false, error: e.message})
+        }
+    }
+
     async respondWithToken(user, auth, response, message) {
         try {
             let token = await auth.withRefreshToken().generate(user)

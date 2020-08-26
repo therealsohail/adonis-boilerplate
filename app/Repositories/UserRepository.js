@@ -24,8 +24,25 @@ class UserRepository extends BaseRepository {
         return await super.store(input, response);
     }
 
+    async socialLogin(request, response) {
+        let input = request.only(['username', 'email', 'image', 'address', 'is_verified', 'is_approved', 'social_platform', 'client_id', 'token'])
+        input.is_verified = 1;
+        input.is_approved = 1;
+        input.is_social_login = 1;
+        input.password = Math.random().toString(36).substring(2, 15)
+        return await super.store(input, response);
+    }
+
     async findByEmail(email) {
         let user = await this.#model.query().where('email', email).first();
+        return user;
+    }
+
+    async findSocialLogin(request) {
+        let user = await this.#model.query().where({
+            social_platform: request.input('social_platform'),
+            client_id: request.input('client_id'),
+        }).first();
         return user;
     }
 
