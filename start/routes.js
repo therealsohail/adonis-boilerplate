@@ -43,3 +43,4 @@ Route.get('logout', async ({auth, response}) => {
 })
 
 Route.resource('userdetail', 'Api/UserDetailController')
+Route.resource('role','Api/RoleController')

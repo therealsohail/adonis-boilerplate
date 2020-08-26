@@ -52,6 +52,10 @@ class User extends Model {
         return this.hasMany('App/Models/Sql/Token')
     }
 
+    roles() {
+        return this.belongsToMany('App/Models/Sql/Role')
+    }
+
     devices() {
         return this.hasMany('App/Models/Sql/UserDevice')
     }

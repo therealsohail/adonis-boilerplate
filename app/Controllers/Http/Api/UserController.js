@@ -2,7 +2,9 @@
 
 const userRepo = use('App/Repositories/UserRepository')
 const userDeviceRepo = use('App/Repositories/UserDeviceRepository')
+const roleRepo = use('App/Repositories/RoleRepository')
 const BaseController = use('BaseController')
+const Role = use('App/Models/Sql/Role')
 const myHelpers = use('myHelpers')
 
 class UserController extends BaseController {
@@ -15,6 +17,7 @@ class UserController extends BaseController {
         try {
             let user = await userRepo.store(request, response)
             request._all.user_id = user.id;
+            await user.roles().attach([Role.USER]);
             await userDeviceRepo.store(request, response)
             return this.respondWithToken(user, auth, response, 'Registered Successfully.')
         } catch (e) {
@@ -40,15 +43,16 @@ class UserController extends BaseController {
     async socialLogin({request, auth, response}) {
         try {
             let user = await userRepo.findSocialLogin(request)
-            if (user === null) {
-                let user = await userRepo.findByEmail(request.input('email'));
-                if (user === null) {
-                    let user = await userRepo.socialLogin(request, response)
+            if (user == null) {
+                user = await userRepo.findByEmail(request.input('email'));
+                if (user == null) {
+                    user = await userRepo.socialLogin(request, response)
                 } else {
                     return response.status(403).json({status: false, error: "Email already exists"})
                 }
             }
             request._all.user_id = user.id;
+            await user.roles().attach([Role.USER]);
             await userDeviceRepo.store(request, response)
             return this.respondWithToken(user, auth, response, 'Login Successfully.')
 
