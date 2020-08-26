@@ -3,8 +3,15 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
 const Hash = use('Hash')
+const fs = use('fs')
+const myHelpers = use('myHelpers')
+const Env = use('Env')
 
 class User extends Model {
+    static get computed() {
+        return ['image_url', 'medium_image_url', 'small_image_url']
+    }
+
     static boot() {
         super.boot()
 
@@ -47,6 +54,35 @@ class User extends Model {
 
     devices() {
         return this.hasMany('App/Models/Sql/UserDevice')
+    }
+
+    getImageUrl({image}) {
+        let path = 'public/' + image
+        if (fs.existsSync(path)) {
+            return Env.get('APP_URL') + '/' + image
+        } else {
+            return Env.get('APP_URL') + '/thumbnail.jpg'
+        }
+    }
+
+    getMediumImageUrl({image}) {
+        let path = 'public/' + image
+        let medium_image = image.split("/")
+        if (fs.existsSync(path)) {
+            return Env.get('APP_URL') + '/' + medium_image[0] + '/medium_' + medium_image[1]
+        } else {
+            return Env.get('APP_URL') + '/thumbnail.jpg'
+        }
+    }
+
+    getSmallImageUrl({image}) {
+        let path = 'public/' + image
+        let medium_image = image.split("/")
+        if (fs.existsSync(path)) {
+            return Env.get('APP_URL') + '/' + medium_image[0] + '/small_' + medium_image[1]
+        } else {
+            return Env.get('APP_URL') + '/thumbnail.jpg'
+        }
     }
 
 }

@@ -3,7 +3,7 @@
 const userRepo = use('App/Repositories/UserRepository')
 const userDeviceRepo = use('App/Repositories/UserDeviceRepository')
 const BaseController = use('BaseController')
-const FCM = use('fcm-node');
+const myHelpers = use('myHelpers')
 
 class UserController extends BaseController {
 
@@ -13,7 +13,7 @@ class UserController extends BaseController {
 
     async register({request, response, auth}) {
         try {
-            let user = await userRepo.store(request.only(['username', 'email', 'password']), response)
+            let user = await userRepo.store(request, response)
             request._all.user_id = user.id;
             await userDeviceRepo.store(request, response)
             return this.respondWithToken(user, auth, response, 'Registered Successfully.')
@@ -61,32 +61,7 @@ class UserController extends BaseController {
     }
 
     async testNotification() {
-        var serverKey = 'AAAAeGyD_X8:APA91bFwYsKRqOAcX54ytuaSdAd95nagu_D4rp3p3-fq5CnTzrD8pVYt_eDxa6W5adgfDCs8jEOmWhJFscLkKF1GTlqqL7lO_cIcrpRiztGiNymhxfZ6nQRPNc6qEPrcUgGUNUtfVcCB'; //put your server key here
-        var fcm = await new FCM(serverKey);
-
-        var message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
-            registration_ids: ['efQatFVG2Sc:APA91bH0F9N0h7kCN3kZWslOAIBejLrouk1rBNCQfkkp0xtwG5zrPNAb-lPsfXNEB6By1rbpIVP8BEGD-lHMYwcNdPKZg0uGs9F1gZGyduSRSlw1Glm6WNjuku-laMkzKtxiSqExvvS-'],
-            collapse_key: 'green',
-
-            notification: {
-                title: 'Hello Testing',
-                body: 'Body of your push notification'
-            },
-
-            data: {}
-        };
-
-        let res = fcm.send(message, function (err, response) {
-                if (err) {
-                    console.log('error')
-                } else {
-                    return response
-                    //console.log('success', response)
-                }
-            }
-        );
-        await console.log('result:', res)
-        // return response.json(res);
+        return await myHelpers.sendNotification(null, 'Hello World', {}, ['efQatFVG2Sc:APA91bH0F9N0h7kCN3kZWslOAIBejLrouk1rBNCQfkkp0xtwG5zrPNAb-lPsfXNEB6By1rbpIVP8BEGD-lHMYwcNdPKZg0uGs9F1gZGyduSRSlw1Glm6WNjuku-laMkzKtxiSqExvvS-'])
     }
 
     /*DELETE ALL USERS FROM DATABASE*/
