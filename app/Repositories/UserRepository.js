@@ -6,11 +6,11 @@ const myHelpers = use('myHelpers')
 
 class UserRepository extends BaseRepository {
 
-    #model
+    model
 
     constructor(model) {
         super(model)
-        this.#model = model
+        this.model = model
     }
 
     async store(request, response) {
@@ -34,12 +34,12 @@ class UserRepository extends BaseRepository {
     }
 
     async findByEmail(email) {
-        let user = await this.#model.query().where('email', email).first();
+        let user = await this.model.query().where('email', email).first();
         return user;
     }
 
     async findSocialLogin(request) {
-        let user = await this.#model.query().where({
+        let user = await this.model.query().where({
             social_platform: request.input('social_platform'),
             client_id: request.input('client_id'),
         }).first();
@@ -47,11 +47,15 @@ class UserRepository extends BaseRepository {
     }
 
     async show(id) {
-        let user = await this.#model.find(id);
+        let user = await this.model.find(id);
         return user;
     }
 
-    deleteAllUsers = () => this.#model.deleteMany({})
+    async updateVerificationCode(verification_code) {
+        return await this.model.query().where('verification_code', verification_code).update({'verification_code': null});
+    }
+
+    deleteAllUsers = () => this.model.deleteMany({})
 
 }
 

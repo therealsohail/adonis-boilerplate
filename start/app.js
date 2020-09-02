@@ -21,6 +21,7 @@ const providers = [
     '@adonisjs/auth/providers/AuthProvider',
     '@adonisjs/validator/providers/ValidatorProvider',
     'adonis-mongoose-model/providers/MongooseProvider',
+    '@adonisjs/mail/providers/MailProvider'
 ]
 
 /*

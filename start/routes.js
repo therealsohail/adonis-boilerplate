@@ -30,6 +30,9 @@ Route.group(() => {
     Route.post('login', 'Api/UserController.login').validator('Login')
     Route.post('refresh-token', 'Api/UserController.refreshToken').validator('RefreshToken')
     Route.post('social-login', 'Api/UserController.socialLogin').validator('SocialLogin')
+    Route.post('forgot-password', 'Api/UserController.forgotPassword').validator('ForgotPassword')
+    Route.post('verify-otp', 'Api/UserController.verifyOTP').validator('VerifyOTP')
+    Route.post('reset-password', 'Api/UserController.resetPassword').validator('ResetPassword')
 }).prefix('api/v1/')
 
 Route.group(() => {
@@ -43,4 +46,4 @@ Route.get('logout', async ({auth, response}) => {
 })
 
 Route.resource('userdetail', 'Api/UserDetailController')
-Route.resource('role','Api/RoleController')
+Route.resource('role', 'Api/RoleController')

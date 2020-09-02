@@ -5,7 +5,7 @@ class RegisterUser extends BaseValidator {
     rules = {
         username: 'required',
         email: 'required|email|unique:users',
-        password: 'required',
+        password: 'required|confirmed',
         device_type: 'required|in:ios,android,web',
         device_token: 'required'
     }
