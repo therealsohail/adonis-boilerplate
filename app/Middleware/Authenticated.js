@@ -13,7 +13,7 @@ class Authenticated {
     async handle({request, auth, response}, next) {
         // call next to advance the request
         if (!auth.user) {
-            return response.redirect('login')
+            return response.redirect('/admin/login')
         }
         await next()
     }

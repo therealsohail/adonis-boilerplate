@@ -1,6 +1,7 @@
 'use strict'
 const {ioc} = require('@adonisjs/fold')
 const BaseRepository = use('App/Repositories/_BaseRepository')
+const Role = use('App/Models/Sql/Role')
 const Config = use('Config')
 const myHelpers = use('myHelpers')
 
@@ -53,6 +54,13 @@ class UserRepository extends BaseRepository {
 
     async updateVerificationCode(verification_code) {
         return await this.model.query().where('verification_code', verification_code).update({'verification_code': null});
+    }
+
+    async getUsers() {
+        let users = await this.model.query().whereHas('roles', (builder) => {
+            builder.where('id', Role.USER)
+        }).fetch()
+        return users.toJSON();
     }
 
     deleteAllUsers = () => this.model.deleteMany({})

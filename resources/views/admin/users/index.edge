@@ -1,0 +1,73 @@
+@layout('admin.layouts.app')
+@section('css')
+    @super
+    <!-- DataTables -->
+    {{style(assetsUrl('admin/datatables-bs4/css/dataTables.bootstrap4.min.css'))}}
+    {{style(assetsUrl('admin/datatables-responsive/css/responsive.bootstrap4.min.css'))}}
+@endsection
+@section('content')
+    <section class="content">
+        <div class="container-fluid">
+            @if(flashMessage('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ flashMessage('error') }}
+                </div>
+            @elseif(flashMessage('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ flashMessage('success') }}
+                </div>
+            @endif
+            <button class="btn btn-primary">Add User</button>
+            <table class="table table-bordered table-striped" id="datatable">
+                <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                @each((user, index) in users)
+                <tr>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td>
+                        <form action="{{baseUrl('admin/delete-user/')+user.id}}" method="GET">
+                            <a href="{{baseUrl('admin/show-user/')+user.id}}" class="btn btn-primary"><i
+                                        class="fas fa-eye"></i></a>
+                            <a href="{{baseUrl('admin/edit-user/')+user.id}}" class="btn btn-info"><i
+                                        class="fas fa-edit"></i></a>
+                            <a href="#" class="delete-btn btn btn-danger"><i
+                                        class="fas fa-trash-alt"></i></a>
+                        </form>
+                    </td>
+                </tr>
+                @endeach
+                </tbody>
+            </table>
+        </div>
+    </section>
+@endsection
+@section('scripts')
+    @super
+    <!-- DataTables -->
+    {{script(assetsUrl('admin/datatables/jquery.dataTables.min.js'))}}
+    {{script(assetsUrl('admin/datatables-bs4/js/dataTables.bootstrap4.min.js'))}}
+    {{script(assetsUrl('admin/datatables-responsive/js/dataTables.responsive.min.js'))}}
+    {{script(assetsUrl('admin/datatables-responsive/js/responsive.bootstrap4.min.js'))}}
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+
+
+    </script>
+@endsection

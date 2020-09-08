@@ -37,13 +37,37 @@ Route.group(() => {
 
 Route.group(() => {
     Route.resource('userdevice', 'Api/UserDeviceController')
+    Route.post('change-password', 'Api/UserController.changePassword').validator('ChangePassword')
 }).prefix('api/v1/').middleware(['auth'])
 
 
 Route.get('logout', async ({auth, response}) => {
     await auth.logout()
-    response.redirect('login')
+    response.redirect('admin/login')
 })
+Route.get('admin/login', ({auth, response, view}) => {
+    if (auth.user) {
+        return response.route('admin.dashboard')
+    }
+    return view.render('admin.login')
+})
+Route.post('admin/login', 'admin/UserController.login').validator('AdminLogin')
+Route.group(() => {
+    Route.get('dashboard', ({view}) => {
+        return view.render('admin.dashboard', {title: "Dashboard"})
+    }).as('admin.dashboard')
+    Route.get('users', 'admin/UserController.index')
+    Route.get('delete-user/:id', 'admin/UserController.destroy')
+    /*Route.get('users', ({view}) => {
+        return view.render('admin.dashboard')
+    })*/
+
+}).prefix('admin/').middleware(['authenticated'])
 
 Route.resource('userdetail', 'Api/UserDetailController')
 Route.resource('role', 'Api/RoleController')
+
+
+Route.get('404', ({view}) => {
+    return view.render('admin.dashboard')
+})

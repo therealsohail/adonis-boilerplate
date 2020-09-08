@@ -116,6 +116,8 @@ hooks.after.providersBooted(() => {
     edge.global('timeAgo', function (date, format) {
         return moment(date, format).fromNow()
     })
-
+    edge.global('consoleLog', function (data) {
+        console.log(data)
+    })
 
 })

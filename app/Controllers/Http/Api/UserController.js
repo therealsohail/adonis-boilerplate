@@ -8,6 +8,7 @@ const Role = use('App/Models/Sql/Role')
 const myHelpers = use('myHelpers')
 const Mail = use('Mail')
 const Env = use('Env')
+const Hash = use('Hash')
 
 class UserController extends BaseController {
 
@@ -33,7 +34,7 @@ class UserController extends BaseController {
         let {email, password} = request.all();
 
         try {
-            if (await auth.attempt(email, password)) {
+            if (await auth.authenticator('jwt').attempt(email, password)) {
                 let user = await userRepo.findByEmail(email)
                 return this.respondWithToken(user, auth, response, 'Login Successfully.')
             }
@@ -115,7 +116,22 @@ class UserController extends BaseController {
             user.password = request.input('password')
             user.verification_code = null
             await user.save()
-            return response.json({status: true, message: "Password Changed"})
+            return response.json({status: true, message: "Password Changed Successfully"})
+        } catch (e) {
+            return response.status(403).json({status: false, error: e.message})
+        }
+    }
+
+    async changePassword({request, auth, response}) {
+        try {
+            let user = auth.user
+            let verify = await Hash.verify(request.input('current_password'), user.password)
+            if (!verify) {
+                return response.status(403).json({status: false, error: "Wrong password"})
+            }
+            user.password = request.input('password')
+            await user.save()
+            return response.json({status: true, message: "Password Changed Successfully"})
         } catch (e) {
             return response.status(403).json({status: false, error: e.message})
         }
@@ -123,7 +139,7 @@ class UserController extends BaseController {
 
     async respondWithToken(user, auth, response, message) {
         try {
-            let token = await auth.withRefreshToken().generate(user)
+            let token = await auth.authenticator('jwt').withRefreshToken().generate(user)
             Object.assign(user, {access_token: token})
             return response.json({status: true, data: user, message: message})
         } catch (e) {
@@ -135,7 +151,7 @@ class UserController extends BaseController {
     async refreshToken({auth, request, response}) {
         try {
             let input = await request.only('refresh_token');
-            let token = await auth.newRefreshToken().generateForRefreshToken(input.refresh_token, true)
+            let token = await auth.authenticator('jwt').newRefreshToken().generateForRefreshToken(input.refresh_token, true)
             const parsedJWT = await auth.authenticator('jwt')._verifyToken(token.token)
             const user = await userRepo.show(parsedJWT.uid)
             return this.respondWithToken(user, auth, response, 'Refreshed Successfully.');

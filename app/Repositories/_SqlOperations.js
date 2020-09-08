@@ -10,8 +10,14 @@ class _SqlOperations {
     }
 
     //Get all records
-    async index(ctx, order = ['id', 'asc']) {
-        let result = await this.model.query().orderBy(order[0], order[1]).fetch()
+    async index(ctx, order = ['id', 'asc'], limit, offset) {
+        let result;
+        if (typeof limit !== 'undefined' && typeof offset !== 'undefined') {
+            result = await this.model.query().orderBy(order[0], order[1]).offset(offset)
+                .limit(limit).fetch()
+        } else {
+            result = await this.model.query().orderBy(order[0], order[1]).fetch()
+        }
         result = result.toJSON()
         return result
     }

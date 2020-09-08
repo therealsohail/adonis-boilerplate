@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrfToken }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>B.O.B</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+{{style(assetsUrl('admin/fontawesome-free/css/all.min.css'))}} <!-- Ionicons -->
+{{style('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}
+<!-- Tempusdominus Bbootstrap 4 -->
+{{style(assetsUrl('admin/css/tempusdominus-bootstrap-4.css'))}}
+<!-- iCheck -->
+{{style(assetsUrl('admin/icheck-bootstrap/icheck-bootstrap.min.css'))}}
+<!-- JQVMap -->
+{{style(assetsUrl('admin/jqvmap/jqvmap.min.css'))}}
+<!-- Theme style -->
+{{style(assetsUrl('admin/css/adminlte.css'))}}
+<!-- overlayScrollbars -->
+{{style(assetsUrl('admin/css/OverlayScrollbars.css'))}}
+<!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    @section('css')
+
+    @endsection
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <!-- Navbar -->
+@include('admin.layouts.nav')
+<!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+@include('admin.layouts.sidebar')
+
+<!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">{{title}}</h1>
+                    </div>
+                    {{--<div class="col-sm-6">--}}
+                    {{--<ol class="breadcrumb float-sm-right">--}}
+                    {{--<li class="breadcrumb-item"><a href="#">Home</a></li>--}}
+                    {{--<li class="breadcrumb-item active">Dashboard v1</li>--}}
+                    {{--</ol>--}}
+                    {{--</div>--}}
+                </div>
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        @!section('content')
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+@include('admin.layouts.footer')
+
+<!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+{{script(assetsUrl('admin/js/jquery/jquery.min.js'))}}
+<!-- jQuery UI 1.11.4 -->
+{{script(assetsUrl('admin/js/jquery-ui/jquery-ui.min.js'))}}
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+{{script(assetsUrl('admin/js/bootstrap.bundle.js'))}}
+<!-- ChartJS -->
+{{script(assetsUrl('admin/js/chart.js/Chart.min.js'))}}
+<!-- Sparkline -->
+{{script(assetsUrl('admin/js/sparkline.js'))}}
+<!-- jQuery Knob Chart -->
+{{script(assetsUrl('admin/js/jquery.knob.min.js'))}}
+
+{{script(assetsUrl('admin/js/moment/moment.min.js'))}}
+<!-- Tempusdominus Bootstrap 4 -->
+{{script(assetsUrl('admin/js/tempusdominus-bootstrap-4.js'))}}
+<!-- overlayScrollbars -->
+{{script(assetsUrl('admin/js/jquery.overlayScrollbars.js'))}}
+<!-- AdminLTE App -->
+{{script(assetsUrl('admin/js/adminlte.js'))}}
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+{{script(assetsUrl('admin/js/pages/dashboard.js'))}}
+<!-- AdminLTE for demo purposes -->
+{{script(assetsUrl('admin/js/demo.js'))}}
+{{script(assetsUrl('https://unpkg.com/sweetalert/dist/sweetalert.min.js'))}}
+
+@section('scripts')
+
+@endsection
+</body>
+</html>

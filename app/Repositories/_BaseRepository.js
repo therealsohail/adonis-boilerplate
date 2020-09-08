@@ -23,8 +23,8 @@ class _BaseRepository {
     }
 
     //Get all records
-    async index(ctx, order = ['id', 'asc']) {
-        return this.#db_obj.index(ctx, order)
+    async index(ctx, order = ['id', 'asc'], limit, offset) {
+        return this.#db_obj.index(ctx, order, limit, offset)
     }
 
     //Save a record
