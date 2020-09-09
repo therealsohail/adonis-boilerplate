@@ -1,0 +1,45 @@
+@layout('admin.layouts.app')
+@section('css')
+    @super
+@endsection
+@section('actions')
+    @super
+    <div class="btn-group" style="margin-top: -10px;">
+
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+            Action
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{baseUrl('admin/edit-user/')+user.id}}">
+                <i class="fas fa-edit"></i> Edit</a>
+            <a class="dropdown-item" href="{{baseUrl('admin/users')}}">
+                <i class="fas fa-arrow-left"></i> Back</a>
+            <div class="dropdown-divider"></div>
+            <form action="{{baseUrl('admin/delete-user/')+user.id}}" method="GET">
+                <a class="dropdown-item btn btn-danger delete-btn" href="#">
+                    <i class="fas fa-trash-alt"></i> Delete
+                </a>
+            </form>
+        </div>
+
+    </div>
+@endsection
+@section('content')
+    <section class="content">
+        <div class="container-fluid">
+            @if(flashMessage('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ flashMessage('error') }}
+                </div>
+            @elseif(flashMessage('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ flashMessage('success') }}
+                </div>
+            @endif
+            @include('admin.users.show-fields')
+        </div>
+    </section>
+@endsection
+@section('scripts')
+    @super
+@endsection

@@ -4,6 +4,8 @@ const BaseRepository = use('App/Repositories/_BaseRepository')
 const Role = use('App/Models/Sql/Role')
 const Config = use('Config')
 const myHelpers = use('myHelpers')
+const User = use('App/Models/Sql/User')
+const Hash = use('Hash')
 
 class UserRepository extends BaseRepository {
 
@@ -15,7 +17,7 @@ class UserRepository extends BaseRepository {
     }
 
     async store(request, response) {
-        let input = request.only(['username', 'email', 'password', 'image', 'address', 'is_verified', 'is_approved'])
+        let input = request.only(User.fillable)
         if (request.file('image')) {
             const file = request.file('image', {types: ['image']})
             input.image = await myHelpers.uploadImage(file, 'users/');
@@ -23,6 +25,20 @@ class UserRepository extends BaseRepository {
         input.is_verified = 1;
         input.is_approved = 1;
         return await super.store(input, response);
+    }
+
+    async update(id, request) {
+        let input = request.only(User.fillable)
+        if (request.file('image')) {
+            const file = request.file('image', {types: ['image']})
+            input.image = await myHelpers.uploadImage(file, 'users/');
+        }
+        if (input.password != null) {
+            input.password = await Hash.make(input.password)
+        } else {
+            delete input.password;
+        }
+        return await this.model.query().where('id', id).update(input)
     }
 
     async socialLogin(request, response) {

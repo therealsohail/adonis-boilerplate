@@ -9,8 +9,10 @@ const Env = use('Env')
 
 class User extends Model {
     static get computed() {
-        return ['image_url', 'medium_image_url', 'small_image_url']
+        return ['image_url', 'medium_image_url', 'small_image_url', 'role_csv']
     }
+
+    static fillable = ['username', 'about', 'phone', 'email', 'password', 'image', 'address', 'is_verified', 'is_approved'];
 
     static boot() {
         super.boot()
@@ -24,6 +26,7 @@ class User extends Model {
                 userInstance.password = await Hash.make(userInstance.password)
             }
         })
+        this.addHook('afterFind', 'UserHook.rolesCsv')
     }
 
     static get table() {
@@ -59,6 +62,7 @@ class User extends Model {
     devices() {
         return this.hasMany('App/Models/Sql/UserDevice')
     }
+
 
     getImageUrl({image}) {
         if (image != null && !image.startsWith("http")) {

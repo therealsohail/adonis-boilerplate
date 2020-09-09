@@ -6,6 +6,7 @@ const moment = use('moment')
 class Role extends Model {
     static ADMIN = 1;
     static USER = 2;
+    static BUSINESS_OWNER = 3;
 
     static get table() {
         return 'roles'

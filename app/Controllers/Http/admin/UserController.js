@@ -17,7 +17,7 @@ class UserController extends BaseController {
     }
 
     async login({request, auth, response, view, session}) {
-
+        session.flashOnly(['email'])
         let {email, password} = request.all();
         try {
             let user = await userRepo.findByEmail(email)
@@ -43,6 +43,63 @@ class UserController extends BaseController {
         return view.render('admin.users.index', data)
     }
 
+    async create({response, view}) {
+        let roles = await roleRepo.model.all();
+        return view.render('admin.users.create', {
+            title: "Create User",
+            'roles': roles.toJSON()
+        })
+    }
+
+    async store({response, view, request, session}) {
+        let input = await request.only('roles')
+        let user = await userRepo.store(request, response)
+        await user.roles().attach(input.roles);
+        await session.flash({success: 'User created successfully!'})
+        return response.redirect('/admin/users');
+
+    }
+
+    async show({response, view, request, session}) {
+        let id = request.params.id;
+        let user = await userRepo.model.find(id);
+        if (user == null) {
+            await session.flash({error: 'User not found'})
+            return response.redirect('back')
+        }
+        return view.render('admin.users.show', {user: user.toJSON(), title: "User Profile"})
+    }
+
+    async edit({response, view, request, session}) {
+        let id = request.params.id;
+        let user = await userRepo.model.find(id);
+        if (user == null) {
+            await session.flash({error: 'User not found'})
+            return response.redirect('back')
+        }
+        let roles = await roleRepo.model.all();
+        let role_ids = await user.roles().ids();
+        return view.render('admin.users.edit', {
+            user: user.toJSON(),
+            title: "Edit User",
+            'roles': roles.toJSON(),
+            'role_ids': role_ids
+        })
+    }
+
+    async update({response, view, request, session}) {
+        let id = request.params.id;
+        let user = await userRepo.model.find(id);
+        if (user == null) {
+            await session.flash({error: 'User not found'})
+            return response.redirect('back')
+        }
+        user = await userRepo.update(id, request)
+        await session.flash({success: 'User updated successfully!'})
+        return response.redirect('/admin/users');
+
+    }
+
     async destroy({response, request, session}) {
         let id = request.params.id;
         let user = await userRepo.model.find(id);
@@ -52,7 +109,7 @@ class UserController extends BaseController {
         }
         await user.delete();
         await session.flash({success: 'User Deleted Successfully!'})
-        return response.redirect('back')
+        return response.redirect('/admin/users')
     }
 
     async forgotPassword({request, response}) {

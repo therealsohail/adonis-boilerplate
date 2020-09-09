@@ -20,9 +20,10 @@
 {{style(assetsUrl('admin/css/adminlte.css'))}}
 <!-- overlayScrollbars -->
 {{style(assetsUrl('admin/css/OverlayScrollbars.css'))}}
+{{style(assetsUrl('admin/select2/css/select2.min.css'))}}
+{{style(assetsUrl('admin/select2-bootstrap4-theme/select2-bootstrap4.min.css'))}}
 <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+    {{style('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700')}}
     @section('css')
 
     @endsection
@@ -44,7 +45,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">{{title}}</h1>
+                        <h1 class="m-0 text-dark mr-2" style="display: inline-block">{{title}}</h1>
+                        @section('actions')
+
+
+                        @endsection
                     </div>
                     {{--<div class="col-sm-6">--}}
                     {{--<ol class="breadcrumb float-sm-right">--}}
@@ -95,12 +100,14 @@
 <!-- overlayScrollbars -->
 {{script(assetsUrl('admin/js/jquery.overlayScrollbars.js'))}}
 <!-- AdminLTE App -->
+{{script(assetsUrl('admin/select2/js/select2.full.min.js'))}}
 {{script(assetsUrl('admin/js/adminlte.js'))}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{script(assetsUrl('admin/js/pages/dashboard.js'))}}
 <!-- AdminLTE for demo purposes -->
 {{script(assetsUrl('admin/js/demo.js'))}}
-{{script(assetsUrl('https://unpkg.com/sweetalert/dist/sweetalert.min.js'))}}
+{{script('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}
+
 
 @section('scripts')
 

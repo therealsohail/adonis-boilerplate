@@ -16,7 +16,9 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+Route.get('/', async ({response}) => {
+    response.redirect('admin/login')
+})
 
 Route.group(() => {
     Route.resource('users', 'Api/UserController')
@@ -57,10 +59,12 @@ Route.group(() => {
         return view.render('admin.dashboard', {title: "Dashboard"})
     }).as('admin.dashboard')
     Route.get('users', 'admin/UserController.index')
+    Route.get('user/:id', 'admin/UserController.show')
     Route.get('delete-user/:id', 'admin/UserController.destroy')
-    /*Route.get('users', ({view}) => {
-        return view.render('admin.dashboard')
-    })*/
+    Route.get('edit-user/:id', 'admin/UserController.edit')
+    Route.put('user/:id', 'admin/UserController.update')
+    Route.get('add-user', 'admin/UserController.create')
+    Route.post('user', 'admin/UserController.store').validator('AddUser')
 
 }).prefix('admin/').middleware(['authenticated'])
 
@@ -69,5 +73,5 @@ Route.resource('role', 'Api/RoleController')
 
 
 Route.get('404', ({view}) => {
-    return view.render('admin.dashboard')
+    return view.render('404')
 })
