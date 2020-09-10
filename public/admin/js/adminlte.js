@@ -1913,10 +1913,44 @@
             });
     })
     //select2
-    $('.select2bs4').select2({
-        theme: 'bootstrap4'
-    })
+    if ($('body').hasClass('select2bs4')) {
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+    }
 
+
+    function themeNotification(title, body, timer = 5000) {
+        let class_name = new Date().getTime()
+        let notification_markup = `<section class="${class_name} theme-notification">
+        <div class="nott">
+            <h5>${title}</h5>
+            <p>${body}</p>
+        </div>
+        <script>
+            setTimeout(function () {
+                $('.${class_name}').fadeOut("slow",function(){
+                    this.remove()
+                })
+            }, 10000)
+        </script>
+    </section>`
+
+        $(notification_markup).prependTo('.notification-wrapper')
+    }
+
+    function bellNotification(title, body, created_at, timer = 5000) {
+        let class_name = new Date().getTime()
+        let notification_markup = `<div class="single-notification" >
+        <h5>${title}</h5>
+        <p>${body}</p>
+        <span>${created_at}</span>
+        </div>`
+        if ($('.notification-menu .no-notification').length > 0) {
+            $('.notification-menu .no-notification').remove()
+        }
+        $(notification_markup).prependTo('.notification-menu')
+    }
 
 })));
 //# sourceMappingURL=adminlte.js.map

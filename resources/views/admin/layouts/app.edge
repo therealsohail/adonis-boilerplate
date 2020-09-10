@@ -85,6 +85,7 @@
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>
+{{script(assetsUrl('admin/select2/js/select2.full.min.js'))}}
 <!-- Bootstrap 4 -->
 {{script(assetsUrl('admin/js/bootstrap.bundle.js'))}}
 <!-- ChartJS -->
@@ -100,15 +101,75 @@
 <!-- overlayScrollbars -->
 {{script(assetsUrl('admin/js/jquery.overlayScrollbars.js'))}}
 <!-- AdminLTE App -->
-{{script(assetsUrl('admin/select2/js/select2.full.min.js'))}}
+
 {{script(assetsUrl('admin/js/adminlte.js'))}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{script(assetsUrl('admin/js/pages/dashboard.js'))}}
 <!-- AdminLTE for demo purposes -->
 {{script(assetsUrl('admin/js/demo.js'))}}
 {{script('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}
+{{script('https://unpkg.com/@adonisjs/websocket-client@1.0.9/dist/Ws.browser.js')}}
+<script>
+    /*******************************
+     *Socket Code
+     *******************************/
+
+    let ws = null
+
+    @loggedIn
+
+    ws || socketConnect()
+
+    @endloggedIn
+
+    function socketConnect() {
+        @if(env('NODE_ENV') == 'development')
+            ws = adonis.Ws('ws://{{env('HOST')+':'+env('PORT')}}').connect()
+        @elseif(env('NODE_ENV') == 'production' && env('PROTOCOL') == 'http://')
+            ws = adonis.Ws('ws://{{env('DOMAIN')}}').connect()
+        @elseif(env('NODE_ENV') == 'production' && env('PROTOCOL') == 'https://')
+            ws = adonis.Ws('wss://{{env('DOMAIN')}}').connect()
+        @endif
+        subscribeToChannel()
+        ws.on('open', () => console.log('{{auth.user.id}} is connected'))
+        ws.on('error', (e) => {
+            console.log(e.toString())
+        })
+    }
+
+    function subscribeToChannel() {
 
 
+        /*User Specific notification*/
+        @loggedIn
+        const userNotif = ws.subscribe('notification:user{{auth.user.id}}')
+        userNotif.on('newNotification', (data) => {
+            themeNotification(data.title, data.body)
+            bellNotification(data.title, data.body, '1 min ago')
+        })
+
+        @endloggedIn
+
+            /*General Notification*/
+        const notif = ws.subscribe('notification:subscribedUser')
+        notif.on('newNotification', (data) => {
+            themeNotification(data.title, data.body)
+        })
+
+
+        /*Get unread Notification count*/
+        const unreadNotification = ws.subscribe('notification:unreadNotification')
+        const uid = {{auth.user.id}}
+        unreadNotification.emit('unreadNotification', {user_id: uid})
+
+        /*unreadNotification listerner*/
+        unreadNotification.on('unreadNotification', function (notification) {
+            if (notification) {
+                $('.bell').addClass('unread')
+            }
+        })
+    }
+</script>
 @section('scripts')
 
 @endsection
