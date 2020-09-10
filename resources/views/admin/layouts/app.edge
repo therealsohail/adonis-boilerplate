@@ -108,9 +108,11 @@
 <!-- AdminLTE for demo purposes -->
 {{script(assetsUrl('admin/js/demo.js'))}}
 {{script('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}
+{{-- web socket assets --}}
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/@adonisjs/websocket-client@1.0.9/dist/Ws.browser.js"></script>
+{{-- web socket assets end --}}
 <script>
     /*******************************
      *Socket Code
@@ -126,11 +128,11 @@
 
     function socketConnect() {
         @if(env('NODE_ENV') == 'development')
-        ws = adonis.Ws('ws://{{env('HOST')+':'+env('PORT')}}').connect()
+            ws = adonis.Ws('ws://{{env('HOST')+':'+env('PORT')}}').connect()
         @elseif(env('NODE_ENV') == 'production' && env('PROTOCOL') == 'http://')
-        ws = adonis.Ws('ws://{{env('DOMAIN')}}').connect()
+            ws = adonis.Ws('ws://{{env('DOMAIN')}}').connect()
         @elseif(env('NODE_ENV') == 'production' && env('PROTOCOL') == 'https://')
-        ws = adonis.Ws('wss://{{env('DOMAIN')}}').connect()
+            ws = adonis.Ws('wss://{{env('DOMAIN')}}').connect()
         @endif
         subscribeToChannel()
         ws.on('open', () => console.log('{{auth.user.id}} is connected'))
@@ -143,33 +145,34 @@
 
 
         {{--/*User Specific notification*/--}}
-        {{--@loggedIn--}}
-        {{--const userNotif = ws.subscribe('notification:user{{auth.user.id}}')--}}
-        {{--userNotif.on('newNotification', (data) => {--}}
-        {{--themeNotification(data.title, data.body)--}}
-        {{--bellNotification(data.title, data.body, '1 min ago')--}}
-        {{--})--}}
+            @loggedIn
+        const userNotif = ws.subscribe('notification:user{{auth.user.id}}')
+        userNotif.on('newNotification', (data) => {
+            let count = parseInt($('#notification-count').text())
+            count++;
+            $('#notification-count').text(count)
+            // themeNotification(data.title, data.body)
+            // bellNotification(data.title, data.body, '1 min ago')
+        })
 
-        {{--@endloggedIn--}}
+        @endloggedIn
 
-        {{--/*General Notification*/--}}
-        {{--const notif = ws.subscribe('notification:subscribedUser')--}}
-        {{--notif.on('newNotification', (data) => {--}}
-        {{--themeNotification(data.title, data.body)--}}
-        {{--})--}}
+                {{--/*General Notification*/--}}
+                {{--const notif = ws.subscribe('notification:subscribedUser')--}}
+                {{--notif.on('newNotification', (data) => {--}}
+                {{--themeNotification(data.title, data.body)--}}
+                {{--})--}}
 
 
-        {{--/*Get unread Notification count*/--}}
-        {{--const unreadNotification = ws.subscribe('notification:unreadNotification')--}}
-        {{--const uid = {{auth.user.id}}--}}
-        {{--unreadNotification.emit('unreadNotification', {user_id: uid})--}}
+            /*Get unread Notification count*/
+        const unreadNotification = ws.subscribe('notification:unreadNotification')
+        const uid = {{auth.user.id}}
+        unreadNotification.emit('unreadNotification', {user_id: uid})
 
-        {{--/*unreadNotification listerner*/--}}
-        {{--unreadNotification.on('unreadNotification', function (notification) {--}}
-        {{--if (notification) {--}}
-        {{--$('.bell').addClass('unread')--}}
-        {{--}--}}
-        {{--})--}}
+        /*unreadNotification listerner*/
+        unreadNotification.on('unreadNotification', function (notification) {
+            $('#notification-count').text(notification.count)
+        })
     }
 </script>
 @section('scripts')

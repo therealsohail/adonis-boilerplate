@@ -75,3 +75,5 @@ Route.resource('role', 'Api/RoleController')
 Route.get('404', ({view}) => {
     return view.render('404')
 })
+Route.get('test', 'admin/UserController.test')
+Route.resource('notification','Api/NotificationController')

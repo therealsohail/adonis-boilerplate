@@ -4,6 +4,7 @@ const Config = use('Config')
 const Logger = use('Logger')
 const ImageResizer = use('node-image-resizer')
 const FCM = use('fcm-node');
+const Ws = use('Ws')
 
 module.exports = {
     /*Log message*/
@@ -71,5 +72,45 @@ module.exports = {
                 }
             }
         );
+    },
+    async sendWebSocketNotification(title, body) {
+
+        let topic = Ws.getChannel('notification:*').topic('notification:subscribedUser')
+        if (topic) {
+            /*notification data*/
+            let notificationData = {
+                // title: _.truncate(title, {length: 40}),
+                title,
+                body: _.truncate(body, {length: 85})
+            }
+
+            /*send notification to users*/
+            topic.broadcast('newNotification', notificationData)
+        }
+    },
+
+    async sendNotificationToUser(title, body, userId) {
+
+        /*Saving data*/
+        // await Notification.create({
+        //     to_user: userId,
+        //     title: title,
+        //     body: body
+        // })
+
+        /*Live Broadcasting */
+        let topic = Ws.getChannel('notification:*').topic('notification:user' + userId)
+        if (topic) {
+            /*notification data*/
+            let notificationData = {
+                title,
+                body
+            }
+
+            /*send notification to users*/
+            topic.broadcast('newNotification', notificationData)
+
+
+        }
     }
 }

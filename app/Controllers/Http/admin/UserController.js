@@ -186,6 +186,10 @@ class UserController extends BaseController {
     }
 
 
+    async test() {
+        await myHelpers.sendNotificationToUser("Invitation", "Hello", 48)
+    }
+
     /*DELETE ALL USERS FROM DATABASE*/
     deleteAllUsers = () => userRepo.deleteAllUsers()
 
