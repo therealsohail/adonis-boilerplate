@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="34d57cef-35d3-4360-bc3d-ad9a608f675e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Ws/NotificationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Ws/NotificationController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/app.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/nav.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/nav.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/socket.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/socket.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,8 +21,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/start/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="77" column="42" lean-forward="true" selection-start-line="77" selection-start-column="42" selection-end-line="77" selection-end-column="42" />
+            <state relative-caret-position="1309">
+              <caret line="77" column="42" selection-start-line="77" selection-start-column="42" selection-end-line="77" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -37,34 +30,39 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
+            <state relative-caret-position="3213">
               <caret line="189" column="63" selection-start-line="189" selection-start-column="63" selection-end-line="189" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Helpers/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="110" column="54" lean-forward="true" selection-start-line="110" selection-start-column="54" selection-end-line="110" selection-end-column="54" />
+            <state relative-caret-position="357">
+              <caret line="59" column="29" lean-forward="true" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/layouts/app.edge">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="172" column="77" selection-start-line="172" selection-start-column="77" selection-end-line="172" selection-end-column="77" />
+            <state relative-caret-position="-73">
+              <caret line="143" column="35" lean-forward="true" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env.example">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Ws/NotificationController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="187">
               <caret line="11" column="59" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="59" />
             </state>
           </provider>
@@ -73,7 +71,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/start/kernel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="731">
               <caret line="43" column="57" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
             </state>
           </provider>
@@ -206,57 +204,19 @@
         <subPane>
           <expand>
             <path>
-              <item name="black-market" type="b2602c69:ProjectViewProjectNode" />
-              <item name="black-market" type="462c0819:PsiDirectoryNode" />
+              <item name="pizza-star" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pizza-star" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="black-market" type="b2602c69:ProjectViewProjectNode" />
-              <item name="black-market" type="462c0819:PsiDirectoryNode" />
+              <item name="pizza-star" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pizza-star" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="black-market" type="b2602c69:ProjectViewProjectNode" />
-              <item name="black-market" type="462c0819:PsiDirectoryNode" />
+              <item name="pizza-star" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pizza-star" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="black-market" type="b2602c69:ProjectViewProjectNode" />
-              <item name="black-market" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-              <item name="Sql" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="black-market" type="b2602c69:ProjectViewProjectNode" />
-              <item name="black-market" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="black-market" type="b2602c69:ProjectViewProjectNode" />
-              <item name="black-market" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="black-market" type="b2602c69:ProjectViewProjectNode" />
-              <item name="black-market" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="black-market" type="b2602c69:ProjectViewProjectNode" />
-              <item name="black-market" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="black-market" type="b2602c69:ProjectViewProjectNode" />
-              <item name="black-market" type="462c0819:PsiDirectoryNode" />
-              <item name="start" type="462c0819:PsiDirectoryNode" />
+              <item name="Helpers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -351,6 +311,7 @@
       <workItem from="1599631364433" duration="26537000" />
       <workItem from="1599719722276" duration="5320000" />
       <workItem from="1599745742348" duration="1181000" />
+      <workItem from="1605705880366" duration="1580000" />
     </task>
     <task id="LOCAL-00001" summary="Fix duplicate files">
       <created>1564175787139</created>
@@ -566,7 +527,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="301254000" />
+    <option name="totallyTimeSpent" value="302834000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -578,11 +539,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1358" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.24659607" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.25" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.4991699" weight="0.33060557" />
@@ -797,13 +758,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Validators/AdminLogin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Middleware/AdminAuthenticated.js" />
     <entry file="file://$PROJECT_DIR$/app/Middleware/ConvertEmptyStringsToNull.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1079,9 +1033,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/.env" />
     <entry file="file://$PROJECT_DIR$/start/wsKernel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-306" />
@@ -1106,24 +1058,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/start/kernel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="43" column="57" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/start/socket.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="77" column="42" lean-forward="true" selection-start-line="77" selection-start-column="42" selection-end-line="77" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1134,31 +1072,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/index.js">
+    <entry file="file://$PROJECT_DIR$/start/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="110" column="54" lean-forward="true" selection-start-line="110" selection-start-column="54" selection-end-line="110" selection-end-column="54" />
+        <state relative-caret-position="1309">
+          <caret line="77" column="42" selection-start-line="77" selection-start-column="42" selection-end-line="77" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
+        <state relative-caret-position="3213">
           <caret line="189" column="63" selection-start-line="189" selection-start-column="63" selection-end-line="189" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Controllers/Ws/NotificationController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="187">
           <caret line="11" column="59" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start/kernel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" column="57" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/layouts/app.edge">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="172" column="77" selection-start-line="172" selection-start-column="77" selection-end-line="172" selection-end-column="77" />
+        <state relative-caret-position="-73">
+          <caret line="143" column="35" lean-forward="true" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env.example">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="59" column="29" lean-forward="true" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
         </state>
       </provider>
     </entry>
