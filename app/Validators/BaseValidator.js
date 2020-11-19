@@ -42,6 +42,7 @@ class BaseValidator {
         'g-recaptcha-response.required': 'Please verify that you are not a bot.',
         'device_type.in': 'Device type should be in ios,android,web',
         'email.exists': 'Email is not found',
+        'email.unique':"The email is already registered!"
 
     }
 

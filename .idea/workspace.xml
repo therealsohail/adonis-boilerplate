@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34d57cef-35d3-4360-bc3d-ad9a608f675e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Middleware/jwt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/Api/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/Api/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Middleware/Authenticated.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Middleware/Authenticated.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/UserRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/UserRepository.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Validators/BaseValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Validators/BaseValidator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/kernel.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/kernel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Validators/VerifyOTP.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Validators/VerifyOTP.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/start/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="74" column="54" selection-start-line="74" selection-start-column="54" selection-end-line="74" selection-end-column="54" />
+            <state relative-caret-position="311">
+              <caret line="75" column="26" selection-start-line="75" selection-start-column="16" selection-end-line="75" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -40,8 +33,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Validators/ForgotPassword.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+            <state relative-caret-position="85">
+              <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -64,20 +57,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Http/Api/UserController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="43">
-              <caret line="51" column="24" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="24" />
+            <state relative-caret-position="299">
+              <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Validators/VerifyOTP.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Validators/BaseValidator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="48" column="118" selection-start-line="48" selection-start-column="118" selection-end-line="48" selection-end-column="118" />
+            <state relative-caret-position="532">
+              <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -103,17 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.env.example">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="-125">
               <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Repositories/UserRepository.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="70" column="10" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -173,7 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Validators/RegisterUser.js" />
         <option value="$PROJECT_DIR$/app/Validators/ResetPassword.js" />
         <option value="$PROJECT_DIR$/app/Validators/ChangePassword.js" />
         <option value="$PROJECT_DIR$/resources/views/admin/layouts/footer.edge" />
@@ -221,9 +213,10 @@
         <option value="$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js" />
         <option value="$PROJECT_DIR$/.env.example" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/Api/UserController.js" />
         <option value="$PROJECT_DIR$/app/Validators/ForgotPassword.js" />
         <option value="$PROJECT_DIR$/app/Validators/BaseValidator.js" />
+        <option value="$PROJECT_DIR$/app/Validators/VerifyOTP.js" />
+        <option value="$PROJECT_DIR$/app/Controllers/Http/Api/UserController.js" />
       </list>
     </option>
   </component>
@@ -374,7 +367,7 @@
       <workItem from="1599745742348" duration="1181000" />
       <workItem from="1605705880366" duration="4942000" />
       <workItem from="1605714121422" duration="6267000" />
-      <workItem from="1605789057821" duration="7400000" />
+      <workItem from="1605789057821" duration="8801000" />
     </task>
     <task id="LOCAL-00001" summary="Fix duplicate files">
       <created>1564175787139</created>
@@ -593,11 +586,18 @@
       <option name="project" value="LOCAL" />
       <updated>1605707808041</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="- Fixed User Controller: Removed Try catch from user Controller&#10;- Fixed Response Message Structure &#10;- Fixed Validator message structure&#10;- Updated env.example for email and other stuff&#10;- Added JWT Middleware for API requests">
+      <created>1605797084850</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1605797084850</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="319863000" />
+    <option name="totallyTimeSpent" value="321264000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -709,7 +709,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Generate Module from command &quot;adonis module name model&quot;" />
     <MESSAGE value="Delete Module command-ACE &#10;-&gt; adonis module name model --rollback" />
     <MESSAGE value="Removed unwanted files" />
     <MESSAGE value="Updated README.md" />
@@ -734,7 +733,8 @@
     <MESSAGE value="+ admin panel default structure" />
     <MESSAGE value="+ User module" />
     <MESSAGE value="+ Database added" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ Database added" />
+    <MESSAGE value="- Fixed User Controller: Removed Try catch from user Controller&#10;- Fixed Response Message Structure &#10;- Fixed Validator message structure&#10;- Updated env.example for email and other stuff&#10;- Added JWT Middleware for API requests" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fixed User Controller: Removed Try catch from user Controller&#10;- Fixed Response Message Structure &#10;- Fixed Validator message structure&#10;- Updated env.example for email and other stuff&#10;- Added JWT Middleware for API requests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -874,56 +874,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/admin/css/adminlte.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="32271" column="27" selection-start-line="32271" selection-start-column="27" selection-end-line="32271" selection-end-column="27" />
-          <folding>
-            <element signature="e#41018#41273#2" expanded="true" />
-            <element signature="e#41946#42112#1" expanded="true" />
-            <element signature="e#42154#42409#1" expanded="true" />
-            <element signature="e#45071#45385#2" expanded="true" />
-            <element signature="e#46070#46236#1" expanded="true" />
-            <element signature="e#46278#46592#1" expanded="true" />
-            <element signature="e#82443#82646#2" expanded="true" />
-            <element signature="e#82929#83081#2" expanded="true" />
-            <element signature="e#83542#83691#2" expanded="true" />
-            <element signature="e#85458#85624#1" expanded="true" />
-            <element signature="e#103562#103805#2" expanded="true" />
-            <element signature="e#104832#105082#2" expanded="true" />
-            <element signature="e#144020#144213#2" expanded="true" />
-            <element signature="e#144270#144463#2" expanded="true" />
-            <element signature="e#765698#765901#2" expanded="true" />
-            <element signature="e#767913#768116#2" expanded="true" />
-            <element signature="e#770138#770341#2" expanded="true" />
-            <element signature="e#772313#772516#2" expanded="true" />
-            <element signature="e#774473#774676#2" expanded="true" />
-            <element signature="e#776664#776867#2" expanded="true" />
-            <element signature="e#778834#779037#2" expanded="true" />
-            <element signature="e#780981#781184#2" expanded="true" />
-            <element signature="e#783157#783360#2" expanded="true" />
-            <element signature="e#785354#785557#2" expanded="true" />
-            <element signature="e#787498#787701#2" expanded="true" />
-            <element signature="e#789647#789850#2" expanded="true" />
-            <element signature="e#791807#792010#2" expanded="true" />
-            <element signature="e#793998#794201#2" expanded="true" />
-            <element signature="e#796160#796363#2" expanded="true" />
-            <element signature="e#798312#798515#2" expanded="true" />
-            <element signature="e#800490#800693#2" expanded="true" />
-            <element signature="e#802652#802855#2" expanded="true" />
-            <element signature="e#804780#804983#2" expanded="true" />
-            <element signature="e#806919#807122#2" expanded="true" />
-            <element signature="e#809097#809300#2" expanded="true" />
-            <element signature="e#811267#811470#2" expanded="true" />
-            <element signature="e#813416#813619#2" expanded="true" />
-            <element signature="e#815552#815755#2" expanded="true" />
-            <element signature="e#817696#817899#2" expanded="true" />
-            <element signature="e#819843#820046#2" expanded="true" />
-            <element signature="e#822019#822222#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/users/datatable-actions.edge">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1183,13 +1133,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="127" column="42" selection-start-line="127" selection-start-column="42" selection-end-line="127" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Repositories/UserRepository.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -1204,9 +1147,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.env.example">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="-125">
           <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="23" />
         </state>
       </provider>
@@ -1218,38 +1168,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Validators/BaseValidator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/start/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="74" column="54" selection-start-line="74" selection-start-column="54" selection-end-line="74" selection-end-column="54" />
+        <state relative-caret-position="311">
+          <caret line="75" column="26" selection-start-line="75" selection-start-column="16" selection-end-line="75" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/Api/UserController.js">
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="51" column="24" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+        <state relative-caret-position="255">
+          <caret line="127" column="42" selection-start-line="127" selection-start-column="42" selection-end-line="127" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Validators/ForgotPassword.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+        <state relative-caret-position="85">
+          <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Validators/BaseValidator.js">
+    <entry file="file://$PROJECT_DIR$/app/Validators/VerifyOTP.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="48" column="118" selection-start-line="48" selection-start-column="118" selection-end-line="48" selection-end-column="118" />
+        <state relative-caret-position="102">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/Api/UserController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
         </state>
       </provider>
     </entry>

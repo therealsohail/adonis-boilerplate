@@ -61,18 +61,21 @@ class UserController extends BaseController {
                 .from(Env.get('MAIL_FROM_ADDRESS'), Env.get('MAIL_FROM_NAME'))
                 .subject('Forgot Password Verification Code')
         })
-        await userRepo.updateVerificationCode(user,verification_code)
+        await userRepo.updateVerificationCode(user, verification_code)
         // user.verification_code = verification_code;
         // await user.save();
         return response.json({status: true, message: "Verification Code Send To Your Email"})
     }
 
     async verifyOTP({request, response}) {
-        let user = await userRepo.model.query().where({'verification_code': request.input('verification_code')}).first()
+        let user = await userRepo.model.query().where({
+            'verification_code': request.input('verification_code'),
+            email: request.input('email')
+        }).first()
         if (user == null) {
-            return response.status(403).json({
+            return response.status(400).json({
                 status: false,
-                error: "Code Is Invalid"
+                error: "Code is invalid"
             })
         }
         return response.json({status: true, message: "Verified"})
