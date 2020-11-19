@@ -46,12 +46,14 @@ class BaseValidator {
     }
 
     async fails(errorMessages) {
-        return this.ctx.response.status(422).send({status: false, error: errorMessages})
+        return this.ctx.response.status(422).json({status: false, message:errorMessages[0].message, data:errorMessages})
     }
 
     get validateAll() {
         return true
     }
+
+
 
 }
 

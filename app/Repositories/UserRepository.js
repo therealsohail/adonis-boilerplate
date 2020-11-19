@@ -68,8 +68,8 @@ class UserRepository extends BaseRepository {
         return user;
     }
 
-    async updateVerificationCode(verification_code) {
-        return await this.model.query().where('verification_code', verification_code).update({'verification_code': null});
+    async updateVerificationCode(user,verification_code) {
+        return await this.model.query().where('id', user.id).update({verification_code});
     }
 
     async getUsers() {

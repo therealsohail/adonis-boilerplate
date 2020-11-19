@@ -20,28 +20,10 @@ Route.get('/', async ({response}) => {
     response.redirect('admin/login')
 })
 
-Route.group(() => {
-    Route.resource('users', 'Api/UserController')
-        .validator(new Map([
-            [['users.store'], ['SaveUser']],
-            [['users.update'], ['UpdateUser']],
-            //[['users.delete'], ['DeleteUser']]
-        ]))
-    Route.delete('delete-all-users', 'Api/UserController.deleteAllUsers')
-    Route.post('register', 'Api/UserController.register').validator('RegisterUser')
-    Route.post('login', 'Api/UserController.login').validator('Login')
-    Route.post('refresh-token', 'Api/UserController.refreshToken').validator('RefreshToken')
-    Route.post('social-login', 'Api/UserController.socialLogin').validator('SocialLogin')
-    Route.post('forgot-password', 'Api/UserController.forgotPassword').validator('ForgotPassword')
-    Route.post('verify-otp', 'Api/UserController.verifyOTP').validator('VerifyOTP')
-    Route.post('reset-password', 'Api/UserController.resetPassword').validator('ResetPassword')
-}).prefix('api/v1/')
 
-Route.group(() => {
-    Route.resource('userdevice', 'Api/UserDeviceController')
-    Route.post('change-password', 'Api/UserController.changePassword').validator('ChangePassword')
-}).prefix('api/v1/').middleware(['auth'])
-
+/*******************************
+ *ADMIN ROUTES
+ *******************************/
 
 Route.get('logout', async ({auth, response}) => {
     await auth.logout()
@@ -68,12 +50,36 @@ Route.group(() => {
 
 }).prefix('admin/').middleware(['authenticated'])
 
-Route.resource('userdetail', 'Api/UserDetailController')
-Route.resource('role', 'Api/RoleController')
-
-
 Route.get('404', ({view}) => {
     return view.render('404')
 })
-Route.get('test', 'admin/UserController.test')
-Route.resource('notification','Api/NotificationController')
+
+
+/*******************************
+ *API ROUTES
+ *******************************/
+
+/*Non JWT Requests*/
+Route.group(() => {
+    Route.resource('users', 'Api/UserController')
+        .validator(new Map([
+            [['users.store'], ['SaveUser']],
+            [['users.update'], ['UpdateUser']],
+            //[['users.delete'], ['DeleteUser']]
+        ]))
+    Route.delete('delete-all-users', 'Api/UserController.deleteAllUsers')
+    Route.post('register', 'Api/UserController.register').validator('RegisterUser')
+    Route.post('login', 'Api/UserController.login').validator('Login')
+    Route.post('refresh-token', 'Api/UserController.refreshToken').validator('RefreshToken')
+    Route.post('social-login', 'Api/UserController.socialLogin').validator('SocialLogin')
+    Route.post('forgot-password', 'Api/UserController.forgotPassword').validator('ForgotPassword')
+    Route.post('verify-otp', 'Api/UserController.verifyOTP').validator('VerifyOTP')
+    Route.post('reset-password', 'Api/UserController.resetPassword').validator('ResetPassword')
+}).prefix('api/v1/')
+
+/*JWT Requests*/
+Route.group(() => {
+    Route.get('all-users', 'Api/UserController.allUsers')
+    Route.resource('userdevice', 'Api/UserDeviceController')
+    Route.post('change-password', 'Api/UserController.changePassword').validator('ChangePassword')
+}).prefix('api/v1/').middleware(['jwt'])

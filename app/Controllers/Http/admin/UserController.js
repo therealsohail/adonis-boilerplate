@@ -125,9 +125,9 @@ class UserController extends BaseController {
                     .from(Env.get('MAIL_FROM_ADDRESS'), Env.get('MAIL_FROM_NAME'))
                     .subject('Forgot Password Verification Code')
             })
-            await userRepo.updateVerificationCode(verification_code)
-            user.verification_code = verification_code;
-            await user.save();
+            await userRepo.updateVerificationCode(user,verification_code)
+            // user.verification_code = verification_code;
+            // await user.save();
             return response.json({status: true, message: "Verification Code Send To Your Email"})
         } catch (e) {
             return response.status(403).json({status: false, error: e.message})

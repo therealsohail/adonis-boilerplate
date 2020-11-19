@@ -42,6 +42,7 @@ const namedMiddleware = {
     guest: 'Adonis/Middleware/AllowGuestOnly',
     authenticated: 'App/Middleware/Authenticated',
     not_authenticated: 'App/Middleware/NotAuthenticated',
+    jwt: 'App/Middleware/JWT',
 }
 
 /*

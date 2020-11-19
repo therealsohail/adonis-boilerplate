@@ -26,14 +26,19 @@ class ExceptionHandler extends BaseExceptionHandler {
     async handle(error, {request, response, view}) {
         /*DRY statements*/
         let errorBody = {src: error.status, message: error.stack}
-        /*end*/
 
+        /*Common message*/
+        let unauthorizedCodeMessage = "You must be authorized to complete this request!"
 
         /*******************************
          * Error Based on Text Code
          *******************************/
         let responseError
         switch (error.code) {
+
+            case 'E_INVALID_JWT_TOKEN':
+                responseError = unauthorizedCodeMessage
+                break
             case 'ER_DUP_ENTRY':
                 responseError = error.sqlMessage
                 break
@@ -42,7 +47,7 @@ class ExceptionHandler extends BaseExceptionHandler {
                 break
 
             case "E_USER_NOT_FOUND":
-                responseError = "User does not exist"
+                responseError = "Record does not exist"
                 break
             case "E_CANNOT_LOGIN":
                 myHelpers.httpAjaxResponse(request, response, "Already Logged in", '/login')
@@ -54,28 +59,44 @@ class ExceptionHandler extends BaseExceptionHandler {
         }
 
         if (responseError) {
-            return response.status(error.status).json({error: responseError})
+            return response.status(error.status).json({status:false, message: responseError, data:{}})
         }
 
         /*******************************
          *Error Based on Code Number
          *******************************/
+
+        //WEB BASED
+        // switch (error.status) {
+        //     case 401:
+        //         response.redirect('/login', false, 301)
+        //         break
+        //     case 404:
+        //         response.redirect('/404', false, 301)
+        //         break
+        //     case 403:
+        //         response.redirect('/', false, 301)
+        //         break;
+        //     default:
+        //         Logger.info(myHelpers.logMsg(errorBody))
+        //         return response.status(error.status).json({status:false, message: responseError, data:{}})
+        //
+        // }
+        //     return true
+
+        //API BASED
+        let errorMessage = error.message
         switch (error.status) {
             case 401:
-                response.redirect('/login', false, 301)
+                errorMessage = unauthorizedCodeMessage
                 break
             case 404:
-                response.redirect('/404', false, 301)
+                errorMessage = "The requested URL is not found on this server"
                 break
-            case 403:
-                response.redirect('/', false, 301)
-                break;
-            default:
-                Logger.info(myHelpers.logMsg(errorBody))
-                return response.status(error.status).json({error: error.toString()})
-
         }
-        return true
+
+        Logger.info(myHelpers.logMsg(errorBody))
+        return response.status(error.status).json({status:false, message: errorMessage, data:{}})
 
     }
 

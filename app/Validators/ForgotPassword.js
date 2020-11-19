@@ -3,7 +3,7 @@ const BaseValidator = use('App/Validators/BaseValidator');
 
 class ForgotPassword extends BaseValidator {
     rules = {
-        email: 'required|email',
+        email: 'required|email'
     }
 }
 
