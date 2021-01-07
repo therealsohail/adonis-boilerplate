@@ -82,4 +82,14 @@ Route.group(() => {
     Route.get('all-users', 'Api/UserController.allUsers')
     Route.resource('userdevice', 'Api/UserDeviceController')
     Route.post('change-password', 'Api/UserController.changePassword').validator('ChangePassword')
+
+    //Logout Api
+    Route.get('logout', async ({auth, response}) => {
+        auth = await auth.authenticator('jwt')
+        const apiToken = auth.getAuthHeader()
+        await auth.revokeTokens([apiToken],true)
+        response.json({status: true, message:"Logged out successfully", data: {}})
+    })
 }).prefix('api/v1/').middleware(['jwt'])
+
+Route.post('test-s3','Api/TestController.testS3')
