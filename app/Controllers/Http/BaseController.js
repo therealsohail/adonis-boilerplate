@@ -32,6 +32,18 @@ class BaseController{
     return this.repo.destroy(params,response)
   }
 
+  async updateColumns(data, where){
+    return this.repo.updateColumns(data,where)
+  }
+
+  async findBy(where){
+    return this.repo.findBy(where)
+  }
+
+  async findByMany(where){
+    return this.repo.findByMany(where)
+  }
+
 }
 
 module.exports = BaseController

@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34d57cef-35d3-4360-bc3d-ad9a608f675e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Repositories/s3Repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/Api/TestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/Api/TestController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Middleware/jwt.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Middleware/Jwt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bodyParser.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/bodyParser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/_BaseRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/_BaseRepository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/_SqlOperations.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/_SqlOperations.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,19 +22,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="231" column="69" selection-start-line="231" selection-start-column="69" selection-end-line="231" selection-end-column="69" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/bodyParser.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="135" column="31" selection-start-line="135" selection-start-column="31" selection-end-line="135" selection-end-column="31" />
+            <state relative-caret-position="272">
+              <caret line="134" column="6" lean-forward="true" selection-start-line="134" selection-start-column="6" selection-end-line="134" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -73,15 +58,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/constants.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
@@ -99,11 +75,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Http/Api/TestController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-117">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="342">
+              <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Repositories/_BaseRepository.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="376">
+              <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Repositories/_SqlOperations.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="86" column="5" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -175,8 +169,6 @@
         <option value="$PROJECT_DIR$/app/Validators/AdminLogin.js" />
         <option value="$PROJECT_DIR$/app/Middleware/AdminAuthenticated.js" />
         <option value="$PROJECT_DIR$/start/hooks.js" />
-        <option value="$PROJECT_DIR$/app/Repositories/_BaseRepository.js" />
-        <option value="$PROJECT_DIR$/app/Repositories/_SqlOperations.js" />
         <option value="$PROJECT_DIR$/resources/views/admin/users/table-actions.edge" />
         <option value="$PROJECT_DIR$/resources/views/404.edge" />
         <option value="$PROJECT_DIR$/resources/views/admin/login.edge" />
@@ -223,6 +215,8 @@
         <option value="$PROJECT_DIR$/start/app.js" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/Api/TestController.js" />
+        <option value="$PROJECT_DIR$/app/Repositories/_BaseRepository.js" />
+        <option value="$PROJECT_DIR$/app/Repositories/_SqlOperations.js" />
       </list>
     </option>
   </component>
@@ -245,6 +239,17 @@
             <path>
               <item name="AdonisJS Boiler plate" type="b2602c69:ProjectViewProjectNode" />
               <item name="AdonisJS Boiler plate" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdonisJS Boiler plate" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdonisJS Boiler plate" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdonisJS Boiler plate" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdonisJS Boiler plate" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Repositories" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -345,7 +350,7 @@
       <workItem from="1605705880366" duration="4942000" />
       <workItem from="1605714121422" duration="6267000" />
       <workItem from="1605789057821" duration="8801000" />
-      <workItem from="1610025199495" duration="5188000" />
+      <workItem from="1610025199495" duration="5534000" />
     </task>
     <task id="LOCAL-00001" summary="Fix duplicate files">
       <created>1564175787139</created>
@@ -571,11 +576,18 @@
       <option name="project" value="LOCAL" />
       <updated>1605797084850</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="- Added S3Repository">
+      <created>1610037285743</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1610037285743</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="326452000" />
+    <option name="totallyTimeSpent" value="326798000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -591,7 +603,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2596401" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2596401" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.4991699" weight="0.32974428" />
@@ -600,7 +612,7 @@
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32917964" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.3795424" />
+      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.3795424" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.31090176" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -687,7 +699,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Delete Module command-ACE &#10;-&gt; adonis module name model --rollback" />
     <MESSAGE value="Removed unwanted files" />
     <MESSAGE value="Updated README.md" />
     <MESSAGE value="Update README.md" />
@@ -712,7 +723,8 @@
     <MESSAGE value="+ User module" />
     <MESSAGE value="+ Database added" />
     <MESSAGE value="- Fixed User Controller: Removed Try catch from user Controller&#10;- Fixed Response Message Structure &#10;- Fixed Validator message structure&#10;- Updated env.example for email and other stuff&#10;- Added JWT Middleware for API requests" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixed User Controller: Removed Try catch from user Controller&#10;- Fixed Response Message Structure &#10;- Fixed Validator message structure&#10;- Updated env.example for email and other stuff&#10;- Added JWT Middleware for API requests" />
+    <MESSAGE value="- Added S3Repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added S3Repository" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1002,24 +1014,10 @@
     <entry file="file://$PROJECT_DIR$/app/Controllers/Http/Api/AuthController.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repositories/_SqlOperations.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Middleware/Authenticated.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repositories/_BaseRepository.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -1128,13 +1126,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/bodyParser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="135" column="31" selection-start-line="135" selection-start-column="31" selection-end-line="135" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="348">
@@ -1146,13 +1137,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1177,6 +1161,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/start/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Repositories/s3Repository.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-202">
@@ -1184,10 +1175,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/bodyParser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="134" column="6" lean-forward="true" selection-start-line="134" selection-start-column="6" selection-end-line="134" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Controllers/Http/Api/TestController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-117">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="342">
+          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/_BaseRepository.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/_SqlOperations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="86" column="5" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
         </state>
       </provider>
     </entry>

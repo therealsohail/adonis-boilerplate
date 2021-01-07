@@ -73,6 +73,18 @@ class _SqlOperations {
         await modelObj.delete()
         return response.status(200).json({msg: this.model.name + " deleted", data: modelObj})
     }
+
+    async updateColumns(data, where){
+        return await this.model.query().where(where).update(data)
+    }
+
+    async findBy(where){
+        return await this.model.query().where(where).first()
+    }
+
+    async findByMany(where){
+        return await this.model.query().where(where).get()
+    }
 }
 
 module.exports = _SqlOperations

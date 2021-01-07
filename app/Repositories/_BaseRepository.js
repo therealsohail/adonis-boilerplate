@@ -49,6 +49,18 @@ class _BaseRepository {
         return this.#db_obj.destroy(params, response)
     }
 
+    async updateColumns(data, where){
+        return this.#db_obj.updateColumns(data,where)
+    }
+
+    async findBy(where){
+        return this.#db_obj.findBy(where)
+    }
+
+    async findByMany(where){
+        return this.#db_obj.findByMany(where)
+    }
+
 }
 
 module.exports = _BaseRepository
