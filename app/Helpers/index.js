@@ -5,6 +5,9 @@ const Logger = use('Logger')
 const ImageResizer = use('node-image-resizer')
 const FCM = use('fcm-node');
 const Ws = use('Ws')
+const fs = require('fs');
+const AWS = require('aws-sdk');
+const sharp = require('sharp');
 
 module.exports = {
     /*Log message*/
@@ -112,5 +115,101 @@ module.exports = {
 
 
         }
+    },
+    async uploadFileS3(fileName, random_name, path) {
+        /* INSTRUCTIONS */
+        // - use env(S3_URL) for full url
+        // for medium variation
+        // let medium_image = image.split("/")
+        // let path = medium_image[0] + '/medium_' + medium_image[1]
+        /* END INSTRUCTIONS */
+        const s3 = await new AWS.S3({
+            accessKeyId: Env.get('S3_KEY'),
+            secretAccessKey: Env.get('S3_SECRET')
+        });
+        // Read content from the file
+        const fileContent = fs.readFileSync(fileName);
+
+        // Setting up S3 upload parameters
+        const params = {
+            Bucket: Env.get('S3_BUCKET'),
+            ACL: 'public-read'
+        };
+        await sharp(fileName).resize(400).toBuffer()
+            .then(async buffer => {
+                params.Body = buffer;
+                params.Key = path + "medium_" + random_name;
+                s3.upload(params, (err, data) => {
+                    if (err) {
+                        console.log("err:", err)
+                    }
+                });
+            }).catch(function (err) {
+                console.log("Got Error");
+            });
+        await sharp(fileName).resize(80).toBuffer()
+            .then(async buffer => {
+                params.Body = buffer;
+                params.Key = path + "small_" + random_name;
+                s3.upload(params, (err, data) => {
+                    if (err) {
+                        console.log("err:", err)
+                    }
+                });
+            }).catch(function (err) {
+                console.log("Got Error");
+            });
+        let response = await new Promise((resolve, reject) => {
+            params.Key = path + random_name;
+            params.Body = fileContent;
+            s3.upload(params, (err, data) => {
+                if (err) {
+                    return reject({
+                        error: true,
+                        message: err,
+                    })
+                }
+                return resolve({
+                    success: true,
+                    data: path + random_name
+                })
+            });
+        })
+
+        return response.data;
+    },
+
+    async deleteS3Object(path) {
+        const s3 = await new AWS.S3({
+            accessKeyId: Env.get('S3_KEY'),
+            secretAccessKey: Env.get('S3_SECRET')
+        });
+        var params = {
+            Bucket: Env.get('S3_BUCKET'),
+            Key: path
+        };
+        s3.deleteObject(params, function (err, data) {
+            if (err) {
+                console.log("error:", err)
+            }
+        });
+        // delete mediuim
+        let medium_image = path.split("/")
+        let medium_path = medium_image[0] + '/medium_' + medium_image[1]
+        params.Key = medium_path;
+        s3.deleteObject(params, function (err, data) {
+            if (err) {
+                console.log("error:", err)
+            }
+        });
+        // delete small
+        let small_image = path.split("/")
+        let small_path = small_image[0] + '/small_' + small_image[1]
+        params.Key = small_path;
+        s3.deleteObject(params, function (err, data) {
+            if (err) {
+                console.log("error:", err)
+            }
+        });
     }
 }
