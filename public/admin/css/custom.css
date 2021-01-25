@@ -1,0 +1,13 @@
+.image-box {
+    width: 100px;
+    height: auto;
+}
+
+.image-box .img-circle {
+    width: 100%;
+    height: auto;
+}
+
+#datatable_wrapper {
+    margin-top: 10px;
+}

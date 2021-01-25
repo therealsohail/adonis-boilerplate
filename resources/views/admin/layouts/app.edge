@@ -22,6 +22,7 @@
 {{style(assetsUrl('admin/css/OverlayScrollbars.css'))}}
 {{style(assetsUrl('admin/select2/css/select2.min.css'))}}
 {{style(assetsUrl('admin/select2-bootstrap4-theme/select2-bootstrap4.min.css'))}}
+{{style(assetsUrl('admin/css/custom.css'))}}
 <!-- Google Font: Source Sans Pro -->
     {{style('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700')}}
     @section('css')
@@ -107,7 +108,10 @@
 {{script(assetsUrl('admin/js/pages/dashboard.js'))}}
 <!-- AdminLTE for demo purposes -->
 {{script(assetsUrl('admin/js/demo.js'))}}
+<!-- CK Editor -->
+{{script('https://adminlte.io/themes/AdminLTE/bower_components/ckeditor/ckeditor.js')}}
 {{script('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}
+{{script(assetsUrl('admin/js/custom.js'))}}
 {{-- web socket assets --}}
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
