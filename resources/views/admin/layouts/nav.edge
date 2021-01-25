@@ -42,5 +42,30 @@
                 <i class="fas fa-th-large"></i>
             </a>
         </li>
+        <li style="margin-top: 10px;" class="nav-item dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="color: black;">
+                <img src="{{baseUrl('public/')+auth.user.image}}" class="user-image" alt="User Image">
+                <span class="hidden-xs" style="text-transform: capitalize;">{{auth.user.username}}</span>
+            </a>
+            <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                    <img src="{{baseUrl('public/')+auth.user.image}}" class="img-circle" alt="User Image">
+
+                    <p>
+                        {{auth.user.username}}
+                        <small>{{auth.user.role_csv}}</small>
+                    </p>
+                </li>
+                <li class="user-footer">
+                    <div class="pull-left float-left">
+                        <a href="{{baseUrl('admin/profile')}}" class="btn btn-primary btn-flat">Profile</a>
+                    </div>
+                    <div class="pull-right float-right">
+                        <a href="{{baseUrl('logout')}}" class="btn btn-primary btn-flat">Sign out</a>
+                    </div>
+                </li>
+            </ul>
+        </li>
     </ul>
 </nav>
