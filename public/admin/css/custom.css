@@ -11,3 +11,11 @@
 #datatable_wrapper {
     margin-top: 10px;
 }
+
+
+/*DATATABLE BUTTONS CSS*/
+button.dt-button, button.dt-button:focus, button.dt-button:hover, button.dt-button:active {
+    background: #007bff !important;
+    color: white;
+    padding: 5px 30px;
+}

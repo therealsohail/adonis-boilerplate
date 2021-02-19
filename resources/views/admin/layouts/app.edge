@@ -22,9 +22,15 @@
 {{style(assetsUrl('admin/css/OverlayScrollbars.css'))}}
 {{style(assetsUrl('admin/select2/css/select2.min.css'))}}
 {{style(assetsUrl('admin/select2-bootstrap4-theme/select2-bootstrap4.min.css'))}}
-{{style(assetsUrl('admin/css/custom.css'))}}
+<!-- DataTables -->
+    {{style(assetsUrl('admin/datatables-bs4/css/dataTables.bootstrap4.min.css'))}}
+    {{style(assetsUrl('admin/datatables-responsive/css/responsive.bootstrap4.min.css'))}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css">
+    {{-- Datatable end--}}
+    {{style(assetsUrl('admin/css/custom.css'))}}
 <!-- Google Font: Source Sans Pro -->
     {{style('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700')}}
+
     @section('css')
 
     @endsection
@@ -111,7 +117,27 @@
 <!-- CK Editor -->
 {{script('https://adminlte.io/themes/AdminLTE/bower_components/ckeditor/ckeditor.js')}}
 {{script('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}
+
+<!-- CK Editor -->
+{{script('https://adminlte.io/themes/AdminLTE/bower_components/ckeditor/ckeditor.js')}}
+{{script('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}
+{{-- datatable --}}
+{{script(assetsUrl('admin/datatables/jquery.dataTables.min.js'))}}
+{{script(assetsUrl('admin/datatables-bs4/js/dataTables.bootstrap4.min.js'))}}
+{{script(assetsUrl('admin/datatables-responsive/js/dataTables.responsive.min.js'))}}
+{{script(assetsUrl('admin/datatables-responsive/js/responsive.bootstrap4.min.js'))}}
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+<script src="https://adminlte.io/themes/dev/AdminLTE/plugins/toastr/toastr.min.js"></script>
+<script src="https://adminlte.io/themes/v3/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+{{-- datatbale end --}}
+
+{{--CUSTOM JS--}}
 {{script(assetsUrl('admin/js/custom.js'))}}
+
 {{-- web socket assets --}}
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>

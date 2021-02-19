@@ -53,7 +53,56 @@ function ajaxGet(url, queryParam, callback) {
     });
 }
 
+/*select2*/
 $('.select2').select2()
+
+/*CKEDITOR*/
 if ($('body').has('#editor1').length > 0) {
     CKEDITOR.replace('editor1')
 }
+
+/*EXPORT, PDF OPTIONS IN DATATABLE*/
+function dataTableInit(title, ordering=true, autowidth=false){
+    let modelNameForPdf = ''
+    if ($('body').has('#datatable').length > 0) {
+        let headers = $("#datatable th").length
+        let columnSize = [];
+        for (i = 0; i < headers - 1; i++) {
+            columnSize.push(i)
+        }
+        $('#datatable').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": ordering,
+            "info": true,
+            "autoWidth": autowidth,
+            "responsive": true,
+            "dom": 'Bfrtip',
+            "buttons": [
+                {
+                    extend: "pageLength"
+                },
+                {
+                    extend: 'csvHtml5',
+                    title: "{{title}}",
+                    text: 'Export CSV',
+                    exportOptions: {
+                        columns: columnSize,
+                        //stripHtml: false => for image html
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    title: title,
+                    text: 'Export PDF',
+                    exportOptions: {
+                        columns: columnSize
+                    }
+                }
+            ]
+        });
+    }
+}
+
+/**/

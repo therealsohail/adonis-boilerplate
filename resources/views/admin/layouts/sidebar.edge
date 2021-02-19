@@ -1,44 +1,61 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{baseUrl('admin/dashboard')}}" class="brand-link">
-        <img src="{{assetsUrl('admin/images/logo.png')}}" alt="AdminLTE Logo"
-             class="brand-image img-circle elevation-3"
-             style="opacity: .8">
-        <span class="brand-text font-weight-light">{{env('APP_NAME')}}</span>
+    <a href="#" class="brand-link">
+        {{--<img src="{{assetsUrl('admin/images/user1-128x128.jpg')}}" alt="AdminLTE Logo"--}}
+             {{--class="brand-image img-circle elevation-3"--}}
+             {{--style="opacity: .8">--}}
+        {{--<span class="brand-text font-weight-light">{{constant('appName')}}</span>--}}
+        <img src="{{baseUrl('admin/images/starPizza.jpg')}}" alt="">
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+    {{--<div class="user-panel mt-3 pb-3 mb-3 d-flex">--}}
+    {{--<div class="image">--}}
+    {{--<img src="{{assetsUrl('admin/images/user1-128x128.jpg')}}" class="img-circle elevation-2"--}}
+    {{--alt="User Image">--}}
+    {{--</div>--}}
+    {{--<div class="info">--}}
+    {{--<a href="#" class="d-block">Alexander Pierce</a>--}}
+    {{--</div>--}}
+    {{--</div>--}}
 
-        <!-- Sidebar Menu -->
+    <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
+                {{--<li class="nav-item has-treeview menu-open">--}}
+                {{--<a href="{{baseUrl('admin/dashboard')}}"--}}
+                {{--class="nav-link {{ request.match('/admin/dashboard') ? 'active': '' }}">--}}
+                {{--<i class="nav-icon fas fa-tachometer-alt"></i>--}}
+                {{--<p>--}}
+                {{--Dashboard--}}
+                {{--</p>--}}
+                {{--</a>--}}
+                {{--</li>--}}
+                @include('admin.layouts.sidebar-listing.edge')
+
+
+                <br>
+                <br>
+                <br>
                 <li class="nav-item has-treeview menu-open">
-                    <a href="{{baseUrl('admin/dashboard')}}"
-                       class="nav-link {{ request.match('/admin/dashboard') ? 'active': '' }}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <a href="{{baseUrl('logout')}}"
+                       class="nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
-                            Dashboard
+                            Logout
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview menu-open">
-                    <a href="{{baseUrl('admin/users')}}"
-                       class="nav-link {{ request.match(['/admin/users','/admin/edit-user/:id','/admin/user/:id','/admin/user/create']) ? 'active': '' }}">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            Users
-                        </p>
-                    </a>
-                </li>
-                <br>
-                <br>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
 </aside>
+

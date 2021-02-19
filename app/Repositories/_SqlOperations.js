@@ -1,7 +1,7 @@
 'use strict'
 
 const _ = require('lodash')
-
+const Config = use('Config')
 class _SqlOperations {
 
     constructor(model) {
@@ -10,16 +10,14 @@ class _SqlOperations {
     }
 
     //Get all records
-    async index(ctx, order = ['id', 'asc'], limit, offset) {
-        let result;
-        if (typeof limit !== 'undefined' && typeof offset !== 'undefined') {
-            result = await this.model.query().orderBy(order[0], order[1]).offset(offset)
-                .limit(limit).fetch()
-        } else {
-            result = await this.model.query().orderBy(order[0], order[1]).fetch()
-        }
-        result = result.toJSON()
-        return result
+    async index(order = ['id', 'desc'], limit=Config.get('constants.limit'), offset=1) {
+        /*
+        * limit = int
+        * offset = int
+        * order = array
+        * */
+        let result = await this.model.query().orderBy(order[0], order[1]).paginate(parseInt(offset),parseInt(limit))
+        this.globalResponse(true,"Record fetched successfully!", result.toJSON())
     }
 
 
@@ -33,9 +31,6 @@ class _SqlOperations {
     //Show single record
     async show(params, response) {
         const modelObj = await this.model.find(params.id)
-        if (!modelObj) {
-            return response.status(404).json({msg: this.noRecordFound})
-        }
         return modelObj
     }
 
@@ -84,6 +79,14 @@ class _SqlOperations {
 
     async findByMany(where){
         return await this.model.query().where(where).get()
+    }
+
+    globalResponse(status, message, data) {
+        return {
+            status: status,
+            message: message || "",
+            data: data || {}
+        }
     }
 }
 

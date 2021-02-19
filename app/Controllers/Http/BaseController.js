@@ -32,6 +32,14 @@ class BaseController{
     return this.repo.destroy(params,response)
   }
 
+  globalResponse(status, message, data) {
+    return {
+      status: status,
+      message: message || "",
+      data: data || {}
+    }
+  }
+
   async updateColumns(data, where){
     return this.repo.updateColumns(data,where)
   }

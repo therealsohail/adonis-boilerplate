@@ -95,6 +95,7 @@ class ExceptionHandler extends BaseExceptionHandler {
                 break
         }
 
+
         Logger.info(myHelpers.logMsg(errorBody))
         return response.status(error.status).json({status:false, message: errorMessage, data:{}})
 

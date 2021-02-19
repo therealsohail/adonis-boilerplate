@@ -20,41 +20,32 @@
             <a href="{{baseUrl('admin/add-user')}}">
                 <button class="btn btn-primary">Add New</button>
             </a>
-            <table class="table table-bordered table-striped" id="datatable">
-                <thead>
-                <tr>
-                    <th>User Name</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @!each((user, index) in users,include = 'admin.users.datatable-actions')
-                </tbody>
-            </table>
+
+            <div class="card mt-2">
+                <div class="card-body">
+                    <table class="table table-bordered table-striped" id="datatable">
+                        <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @!each((user, index) in users,include = 'admin.users.datatable-actions')
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </section>
 @endsection
 @section('scripts')
     @super
-    <!-- DataTables -->
-    {{script(assetsUrl('admin/datatables/jquery.dataTables.min.js'))}}
-    {{script(assetsUrl('admin/datatables-bs4/js/dataTables.bootstrap4.min.js'))}}
-    {{script(assetsUrl('admin/datatables-responsive/js/dataTables.responsive.min.js'))}}
-    {{script(assetsUrl('admin/datatables-responsive/js/responsive.bootstrap4.min.js'))}}
+
     <script>
-        $(document).ready(function () {
-            $('#datatable').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
+        $(function () {
+            dataTableInit('{{title}}')
         });
-
-
     </script>
 @endsection
