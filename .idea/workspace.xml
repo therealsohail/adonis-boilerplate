@@ -5,26 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34d57cef-35d3-4360-bc3d-ad9a608f675e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Commands/AdminFiles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Commands/ApiController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Commands/ApiRepository.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar-listing.edge" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Commands/AdminFiles.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/AdminFiles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Commands/ApiController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/ApiController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Commands/Module.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/Module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/Api/TestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/Api/TestController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/BaseController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/BaseController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/NoSql/Test.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NoSql/Test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Sql/Test.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Sql/Test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/TestRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/TestRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/_SqlOperations.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/_SqlOperations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Validators/Test.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Validators/Test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/app.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.edge" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/Api/TestController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/admin/TestController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/NoSql/Test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Sql/Test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/TestRepository.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Validators/Test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar-listing.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar-listing.edge" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/test/create-fields.edge" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/test/create.edge" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/test/datatable-actions.edge" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/test/edit.edge" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/test/fields.edge" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/test/index.edge" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/test/show-fields.edge" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/test/show.edge" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/start/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -38,11 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Commands/AdminFiles.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="156" column="36" lean-forward="true" selection-start-line="156" selection-start-column="36" selection-end-line="156" selection-end-column="36" />
+            <state relative-caret-position="153">
+              <caret line="45" column="61" lean-forward="true" selection-start-line="43" selection-start-column="7" selection-end-line="45" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -50,17 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/layouts/sidebar-listing.edge">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Commands/Module.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="298" column="31" selection-start-line="298" selection-start-column="31" selection-end-line="298" selection-end-column="31" />
+            <state relative-caret-position="323">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
@@ -68,8 +59,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/start/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="106" selection-start-line="106" selection-end-line="106" />
+            <state relative-caret-position="256">
+              <caret line="46" column="56" lean-forward="true" selection-start-line="46" selection-start-column="56" selection-end-line="46" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="42" column="39" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Commands/ApiController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="173">
+              <caret line="55" column="23" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Commands/Module.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="71">
+              <caret line="348" column="34" selection-start-line="348" selection-start-column="34" selection-end-line="348" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Repositories/_SqlOperations.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1037">
+              <caret line="69" column="5" selection-start-line="62" selection-start-column="4" selection-end-line="69" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -78,10 +105,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>knex</find>
-      <find>this.</find>
-      <find>snake</find>
-      <find>pusher</find>
       <find>adonis-fcm</find>
       <find>Drive</find>
       <find>node-image-resizer</find>
@@ -107,7 +130,11 @@
       <find>Test</find>
       <find>index</find>
       <find>this.tableName</find>
+      <find>colArray</find>
+      <find>colName</find>
+      <find>this.</find>
       <find>tests</find>
+      <find>content</find>
     </findStrings>
     <replaceStrings>
       <replace>users</replace>
@@ -130,7 +157,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/admin/users/create.edge" />
         <option value="$PROJECT_DIR$/resources/views/admin/users/create-fields.edge" />
         <option value="$PROJECT_DIR$/resources/views/admin/users/fields.edge" />
         <option value="$PROJECT_DIR$/app/Validators/AddUser.js" />
@@ -147,7 +173,6 @@
         <option value="$PROJECT_DIR$/start/kernel.js" />
         <option value="$PROJECT_DIR$/app/Middleware/JWT.js" />
         <option value="$PROJECT_DIR$/app/Repositories/UserRepository.js" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js" />
         <option value="$PROJECT_DIR$/app/Validators/ForgotPassword.js" />
         <option value="$PROJECT_DIR$/app/Validators/BaseValidator.js" />
         <option value="$PROJECT_DIR$/app/Validators/VerifyOTP.js" />
@@ -171,16 +196,18 @@
         <option value="$PROJECT_DIR$/app/Exceptions/Handler.js" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/Api/TestController.js" />
         <option value="$PROJECT_DIR$/app/Repositories/TestRepository.js" />
-        <option value="$PROJECT_DIR$/app/Commands/ApiController.js" />
         <option value="$PROJECT_DIR$/app/Commands/ApiRepository.js" />
-        <option value="$PROJECT_DIR$/resources/views/admin/test/fields.edge" />
         <option value="$PROJECT_DIR$/resources/views/admin/test/index.edge" />
-        <option value="$PROJECT_DIR$/resources/views/admin/layouts/sidebar-listing.edge" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/admin/TestController.js" />
-        <option value="$PROJECT_DIR$/start/routes.js" />
         <option value="$PROJECT_DIR$/resources/views/admin/test/datatable-actions.edge" />
         <option value="$PROJECT_DIR$/app/Commands/Module.js" />
+        <option value="$PROJECT_DIR$/app/Commands/ApiController.js" />
+        <option value="$PROJECT_DIR$/app/Controllers/Http/admin/TestController.js" />
+        <option value="$PROJECT_DIR$/resources/views/admin/test/create-fields.edge" />
+        <option value="$PROJECT_DIR$/resources/views/admin/test/fields.edge" />
         <option value="$PROJECT_DIR$/app/Commands/AdminFiles.js" />
+        <option value="$PROJECT_DIR$/resources/views/admin/layouts/sidebar-listing.edge" />
+        <option value="$PROJECT_DIR$/start/routes.js" />
+        <option value="$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js" />
       </list>
     </option>
   </component>
@@ -204,6 +231,38 @@
             <path>
               <item name="AdonisJS Boiler plate" type="b2602c69:ProjectViewProjectNode" />
               <item name="AdonisJS Boiler plate" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdonisJS Boiler plate" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdonisJS Boiler plate" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdonisJS Boiler plate" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdonisJS Boiler plate" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdonisJS Boiler plate" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdonisJS Boiler plate" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdonisJS Boiler plate" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdonisJS Boiler plate" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdonisJS Boiler plate" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdonisJS Boiler plate" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Repositories" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AdonisJS Boiler plate" type="b2602c69:ProjectViewProjectNode" />
@@ -325,7 +384,7 @@
       <workItem from="1610041032151" duration="537000" />
       <workItem from="1610102239444" duration="1793000" />
       <workItem from="1610113840574" duration="1649000" />
-      <workItem from="1613744185952" duration="15912000" />
+      <workItem from="1613744185952" duration="20884000" />
     </task>
     <task id="LOCAL-00001" summary="Fix duplicate files">
       <created>1564175787139</created>
@@ -558,11 +617,18 @@
       <option name="project" value="LOCAL" />
       <updated>1610037285743</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Update Boiler plate">
+      <created>1613762689607</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1613762689607</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="346689000" />
+    <option name="totallyTimeSpent" value="351661000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -574,19 +640,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="1358" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.22622108" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="npm" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.50192803" visible="true" weight="0.28936744" />
+      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.50192803" weight="0.28936744" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5008301" side_tool="true" weight="0.37798545" />
       <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.4991699" weight="0.2664872" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32917964" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.44473007" weight="0.3781965" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.44473007" visible="true" weight="0.3781965" />
       <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.49807197" weight="0.28936744" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -673,7 +740,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Removed unwanted files" />
     <MESSAGE value="Updated README.md" />
     <MESSAGE value="Update README.md" />
     <MESSAGE value="Added Mongoose Database support for CRUD operations" />
@@ -698,7 +764,8 @@
     <MESSAGE value="+ Database added" />
     <MESSAGE value="- Fixed User Controller: Removed Try catch from user Controller&#10;- Fixed Response Message Structure &#10;- Fixed Validator message structure&#10;- Updated env.example for email and other stuff&#10;- Added JWT Middleware for API requests" />
     <MESSAGE value="- Added S3Repository" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added S3Repository" />
+    <MESSAGE value="Update Boiler plate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Boiler plate" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -725,7 +792,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/Commands/AdminFiles.js</url>
-          <line>128</line>
+          <line>125</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="33" />
         </line-breakpoint>
@@ -847,23 +914,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/Api/NotificationController.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Ws/NotificationController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="59" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="50" column="10" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Repositories/RoleRepository.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -923,13 +973,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2159">
-          <caret line="127" column="42" selection-start-line="127" selection-start-column="42" selection-end-line="127" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1094,24 +1137,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repositories/_SqlOperations.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="69" column="5" selection-start-line="62" selection-start-column="4" selection-end-line="69" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
           <caret line="109" column="39" selection-start-line="109" selection-start-column="39" selection-end-line="109" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Commands/ApiController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="16" selection-end-line="81" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1122,45 +1151,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/test/fields.edge">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Controllers/Http/Api/TestController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="27" column="93" selection-start-line="27" selection-start-column="93" selection-end-line="27" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repositories/TestRepository.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/layouts/sidebar-listing.edge">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/admin/TestController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Commands/Module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="298" column="31" selection-start-line="298" selection-start-column="31" selection-end-line="298" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1178,17 +1172,90 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/test/show-fields.edge">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Commands/Module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="348" column="34" selection-start-line="348" selection-start-column="34" selection-end-line="348" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/_SqlOperations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="69" column="5" selection-start-line="62" selection-start-column="4" selection-end-line="69" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/TestRepository.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Commands/ApiController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="55" column="23" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/admin/TestController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="67" column="9" selection-start-line="65" selection-start-column="49" selection-end-line="67" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/test/create.edge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/test/create-fields.edge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="12" selection-start-column="20" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/test/fields.edge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="96" selection-start-line="5" selection-start-column="96" selection-end-line="5" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/layouts/sidebar-listing.edge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/start/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="106" selection-start-line="106" selection-end-line="106" />
+        <state relative-caret-position="256">
+          <caret line="46" column="56" lean-forward="true" selection-start-line="46" selection-start-column="56" selection-end-line="46" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Commands/AdminFiles.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="156" column="36" lean-forward="true" selection-start-line="156" selection-start-column="36" selection-end-line="156" selection-end-column="36" />
+        <state relative-caret-position="153">
+          <caret line="45" column="61" lean-forward="true" selection-start-line="43" selection-start-column="7" selection-end-line="45" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/admin/UserController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="42" column="39" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
         </state>
       </provider>
     </entry>

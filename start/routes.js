@@ -48,15 +48,6 @@ Route.group(() => {
     Route.get('add-user', 'admin/UserController.create')
     Route.post('user', 'admin/UserController.store').validator('AddUser')
 
-    /*ADMIN-Test*/
-    Route.get('tests', 'admin/TestController.index')
-    Route.post('test', 'admin/TestController.store')
-    Route.get('test', 'admin/TestController.create')
-    Route.get('test/:id', 'admin/TestController.show')
-    Route.get('delete-test/:id', 'admin/TestController.destroy')
-    Route.get('edit-test/:id', 'admin/TestController.edit')
-    Route.put('test/:id', 'admin/TestController.update')
-
 }).prefix('admin/').middleware(['authenticated'])
 
 Route.get('404', ({view}) => {
@@ -85,8 +76,7 @@ Route.group(() => {
     Route.post('verify-otp', 'Api/UserController.verifyOTP').validator('VerifyOTP')
     Route.post('reset-password', 'Api/UserController.resetPassword').validator('ResetPassword')
 
-    /*API-Test*/
-    Route.resource('tests','Api/TestController')
+
 }).prefix('api/v1/')
 
 /*JWT Requests*/
@@ -103,66 +93,3 @@ Route.group(() => {
         response.json({status: true, message:"Logged out successfully", data: {}})
     })
 }).prefix('api/v1/').middleware(['jwt'])
-
-
-            /*API-Test*/
-Route.resource('tests','Api/TestController')
-
-/*ADMIN-Test*/
-Route.get('tests', 'admin/TestController.index')
-Route.post('test', 'admin/TestController.store')
-Route.get('test', 'admin/TestController.create')
-Route.get('test/:id', 'admin/TestController.show')
-Route.get('delete-test/:id', 'admin/TestController.destroy')
-Route.get('edit-test/:id', 'admin/TestController.edit')
-Route.put('test/:id', 'admin/TestController.update')
-            
-            /*API-Test*/
-Route.resource('tests','Api/TestController')
-
-/*ADMIN-Test*/
-Route.get('tests', 'admin/TestController.index')
-Route.post('test', 'admin/TestController.store')
-Route.get('test', 'admin/TestController.create')
-Route.get('test/:id', 'admin/TestController.show')
-Route.get('delete-test/:id', 'admin/TestController.destroy')
-Route.get('edit-test/:id', 'admin/TestController.edit')
-Route.put('test/:id', 'admin/TestController.update')
-            
-            /*API-Test*/
-Route.resource('tests','Api/TestController')
-
-/*ADMIN-Test*/
-Route.get('tests', 'admin/TestController.index')
-Route.post('test', 'admin/TestController.store')
-Route.get('test', 'admin/TestController.create')
-Route.get('test/:id', 'admin/TestController.show')
-Route.get('delete-test/:id', 'admin/TestController.destroy')
-Route.get('edit-test/:id', 'admin/TestController.edit')
-Route.put('test/:id', 'admin/TestController.update')
-            
-            /*API-Test*/
-Route.resource('tests','Api/TestController')
-
-/*ADMIN-Test*/
-Route.get('tests', 'admin/TestController.index')
-Route.post('test', 'admin/TestController.store')
-Route.get('test', 'admin/TestController.create')
-Route.get('test/:id', 'admin/TestController.show')
-Route.get('delete-test/:id', 'admin/TestController.destroy')
-Route.get('edit-test/:id', 'admin/TestController.edit')
-Route.put('test/:id', 'admin/TestController.update')
-            
-            /*API-Test*/
-Route.resource('tests','Api/TestController')
-
-/*ADMIN-Test*/
-Route.get('tests', 'admin/TestController.index')
-Route.post('test', 'admin/TestController.store')
-Route.get('test', 'admin/TestController.create')
-Route.get('test/:id', 'admin/TestController.show')
-Route.get('delete-test/:id', 'admin/TestController.destroy')
-Route.get('edit-test/:id', 'admin/TestController.edit')
-Route.put('test/:id', 'admin/TestController.update')
-            
-            

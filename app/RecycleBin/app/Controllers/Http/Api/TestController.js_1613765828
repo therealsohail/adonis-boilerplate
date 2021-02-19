@@ -1,24 +1,13 @@
 'use strict'
 
-class ApiController {
-
-
-    constructor(args, options) {
-        this.args = args
-        this.options = options
-    }
-
-    apiControllerContent() {
-        return `'use strict'
-
-const ${this.args.name}Repo = use('App/Repositories/${this.args.name}Repository')
+const TestRepo = use('App/Repositories/TestRepository')
 const BaseController = use('BaseController')
 const Config = use('Config')
 
-class ${this.args.name}Controller extends BaseController {
+class TestController extends BaseController {
 
     constructor() {
-        super(${this.args.name}Repo)
+        super(TestRepo)
     }
 
     //Get all records
@@ -35,27 +24,27 @@ class ${this.args.name}Controller extends BaseController {
         let limit = ctx.request.input('limit', Config.get('constants.limit'))
         let orderBy = ctx.request.input('orderBy', 'id')
         let sortBy = ctx.request.input('sortBy', 'desc')
-        let res = await ${this.args.name}Repo.index(offset,limit,orderBy,sortBy)
+        let res = await TestRepo.index(offset,limit,orderBy,sortBy)
         return ctx.response.json(this.globalResponse(true, "Record fetched successfully!", res.toJSON()))
     }
 
     //Show single record
     async show(ctx) {
-        const res = await ${this.args.name}Repo.show(ctx.request.params.id)
+        const res = await TestRepo.show(ctx.request.params.id)
         return ctx.response.json(this.globalResponse(true, "Record fetched successfully!", res ? res.toJSON() : {}))
     }
 
     //Save a record
     async store(ctx) {
         let input = ctx.request.except(['password_confirmation','_csrf','_method'])
-        let res = await ${this.args.name}Repo.store(input, ctx.request)
+        let res = await TestRepo.store(input, ctx.request)
         return ctx.response.json(this.globalResponse(true, "Record created successfully!", res))
     }
 
     //Update a record
     async update(ctx) {
-        const input = ctx.request.except(['_csrf','password_confirmation','_method'])
-        let res = await ${this.args.name}Repo.update(ctx.request.params.id, input)
+        const input = ctx.request.all()
+        let res = await TestRepo.update(ctx.request.params.id, input)
         if (!res){
             return ctx.response.json(this.globalResponse(false, "Record not found!",{}))
         }else{
@@ -65,7 +54,7 @@ class ${this.args.name}Controller extends BaseController {
 
     /*Delete a record*/
     async destroy(ctx) {
-        const res = await ${this.args.name}Repo.destroy(ctx.request.params.id)
+        const res = await TestRepo.destroy(ctx.request.params.id)
         if(!res){
             return ctx.response.json(this.globalResponse(false, "Record not found!", {}))
         }else{
@@ -75,8 +64,4 @@ class ${this.args.name}Controller extends BaseController {
 
 }
 
-module.exports = ${this.args.name}Controller`
-    }
-}
-
-module.exports = ApiController
+module.exports = TestController

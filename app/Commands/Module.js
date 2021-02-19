@@ -315,7 +315,7 @@ Route.put('${kebab}/:id', 'admin/${args.name}Controller.update')
             if (resourceCreateFields) {
                 this.warn(args.name + " (create-fields.edge) already exists")
             } else {
-                await this.writeFile(`resources/views/admin/${kebab}/create-fields.edge`, admin.resourceCreateFields())
+                await this.writeFile(`resources/views/admin/${kebab}/create-fields.edge`, await admin.resourceCreateFields())
                 this.info(args.model + " (create-fields.edge) is created")
             }
 
@@ -323,7 +323,7 @@ Route.put('${kebab}/:id', 'admin/${args.name}Controller.update')
             if (resourceShowFields) {
                 this.warn(args.name + " (show-fields.edge) already exists")
             } else {
-                await this.writeFile(`resources/views/admin/${kebab}/show-fields.edge`, admin.resourceShowFields())
+                await this.writeFile(`resources/views/admin/${kebab}/show-fields.edge`, await admin.resourceShowFields())
                 this.info(args.model + " (show-fields.edge) is created")
             }
 
@@ -339,7 +339,7 @@ Route.put('${kebab}/:id', 'admin/${args.name}Controller.update')
             if (resourceFields) {
                 this.warn(args.name + " (fields.edge) already exists")
             } else {
-                await this.writeFile(`resources/views/admin/${kebab}/fields.edge`, admin.resourceFields())
+                await this.writeFile(`resources/views/admin/${kebab}/fields.edge`, await admin.resourceFields())
                 this.info(args.model + " (fields.edge) is created")
             }
         }
@@ -369,6 +369,8 @@ Route.put('${kebab}/:id', 'admin/${args.name}Controller.update')
         //ALL DONE
         this.success(args.name + " module has been generated. Make sure to adjust the followings:")
         console.log(this.chalk.blue('\t=> Move route to route group (if any)\n\t=> Check DB Table related to this model exists\n\t=> Add rules in Validator and link to route (if required)'))
+
+        return true
     }
 }
 

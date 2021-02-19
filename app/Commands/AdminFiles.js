@@ -15,7 +15,7 @@ class AdminFiles {
         this.module = this.args.name
         this.lower = this.module.toLowerCase() //firstmodule
         this.lowercase = _case.lower(this.module) //firstmodule
-        this.capital = _case.capital(this.module,' ') //firstmodule
+        this.capital = _case.capital(this.module, ' ') //firstmodule
         this.pascal = _case.pascal(this.module)
         this.kebab = _case.kebab(this.module)
         this.camel = _case.camel(this.module)
@@ -53,8 +53,8 @@ class ${this.module}Controller extends BaseController {
     }
 
     async store({response, view, request, session}) {
-        
-        let ${this.camel} = await ${this.module}Repo.store(request, response)
+        let input = request.except(['password_confirmation','_csrf','_method'])
+        let ${this.camel} = await ${this.module}Repo.store(input, request)
         await session.flash({success: '${this.lowercase} created successfully!'})
         return response.redirect('/admin/${this.pluralKebab}');
 
@@ -85,17 +85,15 @@ class ${this.module}Controller extends BaseController {
     }
 
     async update({response, view, request, session}) {
-        let input = request.except(['_csrf','password_confirmation','_method'])
-        let id = request.params.id;
-        let row = await ${this.module}Repo.model.find(id);
-        if (row == null) {
-            await session.flash({error: '${this.lowercase} not found'})
+     const input = request.except(['_csrf','password_confirmation','_method'])
+        let res = await ${this.module}Repo.update(request.params.id, input)
+        if (!res){
+            await session.flash({error: 'Record not found'})
             return response.redirect('back')
+        }else{
+            await session.flash({success: 'Record updated successfully!'})
+            return response.redirect('/admin/${this.pluralKebab}');
         }
-        row = await PaymentNotificationRepo.model.query().where({id}).update(input)
-        await session.flash({success: '${this.lowercase} updated successfully!'})
-        return response.redirect('/admin/${this.pluralKebab}');
-
     }
 
     async destroy({response, request, session}) {
@@ -118,7 +116,6 @@ module.exports = ${this.module}Controller
     }
 
 
-
     async resourceIndex() {
 
         let tableName = this.tableName
@@ -126,7 +123,7 @@ module.exports = ${this.module}Controller
         let columns = await Database.table(tableName).columnInfo();
         let colArray = Object.entries(columns);
 
-        let content =  `@layout('admin.layouts.app')
+        let content = `@layout('admin.layouts.app')
 @section('css')
     @super
     <!-- DataTables -->
@@ -154,14 +151,15 @@ module.exports = ${this.module}Controller
             <thead>
             <tr>`
 
-            if(colArray.length > 0){
-                for (let col of colArray){
-                    content += `<th>${col[0]}</th>`
-                }
-                content += `<th>Actions</th>`
+        if (colArray.length > 0) {
+            for (let col of colArray) {
+                let colName = _case.sentence(_case.lower(col[0]))
+                content += `<th>${colName}</th>`
             }
+            content += `<th>Actions</th>`
+        }
 
-            content += `</tr>
+        content += `</tr>
             </thead>
             <tbody>
             @!each((row, index) in rows.data,include = 'admin.${this.kebab}.datatable-actions')
@@ -297,15 +295,26 @@ module.exports = ${this.module}Controller
 @endsection`
     }
 
-    resourceCreateFields() {
-        return `<div class="col-sm-12">
-    <div class="form-group">
-        <label>Title</label>
-        <input type="text" name="title" class="form-control" value="{{ old('title', "") }}" required>
-    </div>
-</div>
+    async resourceCreateFields() {
 
-<!--<div class="col-sm-12">-->
+        let tableName = this.tableName
+        let columns = await Database.table(tableName).columnInfo();
+        let colArray = Object.entries(columns);
+
+        let content = ``
+        for (let col of colArray){
+            if(col[0] == 'created_at' || col[0] == 'updated_at' || col[0] == 'deleted_at' || col[0] == 'id') continue
+            let colName = _case.sentence(_case.lower(col[0]))
+            let fieldType = col[1].type === 'int' ? 'number' : 'text'
+            content += `<div class="col-sm-6">
+    <div class="form-group">
+        <label>${colName}</label>
+        <input type="${fieldType}" name="${col[0]}" class="form-control" value="{{ old('${col[0]}', "") }}" required>
+    </div>
+</div>`
+        }
+
+        content += `<!--<div class="col-sm-12">-->
     <!--<div class="form-group">-->
         <!--<label>Message</label>-->
         <!--<textarea class="form-control" name="message" id="" cols="30" rows="10"></textarea>-->
@@ -316,19 +325,30 @@ module.exports = ${this.module}Controller
     <button class="btn btn-primary">Send</button>
 </div>
 `
+        return content
     }
 
 
-    resourceFields() {
-        return `<div class="col-sm-12">
-    <div class="form-group">
-        <label>Title</label>
-        <input type="text" name="title" class="form-control" value="{{ old('title', row.title) }}" required>
-    </div>
-</div>
+    async resourceFields() {
 
-<button type="submit" class="btn btn-primary">Submit</button>
-`
+        let tableName = this.tableName
+        let columns = await Database.table(tableName).columnInfo();
+        let colArray = Object.entries(columns);
+
+        let content = ``
+        for (let col of colArray){
+            if(col[0] == 'created_at' || col[0] == 'updated_at' || col[0] == 'deleted_at' || col[0] == 'id') continue
+            let colName = _case.sentence(_case.lower(col[0]))
+            let fieldType = col[1].type === 'int' ? 'number' : 'text'
+            content += `<div class="col-sm-6">
+    <div class="form-group">
+        <label>${colName}</label>
+        <input type="${fieldType}" name="${col[0]}" class="form-control" value="{{ old('${col[0]}', row.${col[0]}) }}" required>
+    </div>
+</div>`
+        }
+        content += `<div class="col-sm-12"><button type="submit" class="btn btn-primary">Submit</button></div>`
+        return content
     }
 
     async resourceDatatableActions() {
@@ -336,14 +356,14 @@ module.exports = ${this.module}Controller
         let columns = await Database.table(tableName).columnInfo();
         let colArray = Object.entries(columns);
 
-        let content =  `<tr>`
+        let content = `<tr>`
 
-            if(colArray.length>0){
-                for (let col of colArray){
-                    content += `<td>{{row.${col[0]}}}</td>`
-                }
-
+        if (colArray.length > 0) {
+            for (let col of colArray) {
+                content += `<td>{{row.${col[0]}}}</td>`
             }
+
+        }
         content += `<td>
         <form action="{{baseUrl('admin/delete-${this.kebab}/')+row.id}}" method="GET">
             <a href="{{baseUrl('admin/${this.kebab}/')+row.id}}" class="btn btn-primary"><i
@@ -359,25 +379,26 @@ module.exports = ${this.module}Controller
         return content
     }
 
-    resourceShowFields() {
-        return `<div class="form-group row">
-    <label for="inputName" class="col-sm-2 col-form-label">Title: </label>
-    <div class="col-sm-10">
-        <p class="col-form-label">{{row.title}}</p>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="inputName" class="col-sm-2 col-form-label">Created At: </label>
-    <div class="col-sm-10">
-        <p class="col-form-label">{{row.created_at}}</p>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="inputName" class="col-sm-2 col-form-label">Updated At: </label>
-    <div class="col-sm-10">
-        <p class="col-form-label">{{row.updated_at}}</p>
-    </div>
-</div>`
+    async resourceShowFields() {
+
+        let tableName = this.tableName
+        let columns = await Database.table(tableName).columnInfo();
+        let colArray = Object.entries(columns);
+
+        let content = ``
+
+        if (colArray.length > 0) {
+            for (let col of colArray) {
+                let colName = _case.sentence(_case.lower(col[0]))
+                content += `<div class="form-group row">
+            <label for="inputName" class="col-sm-2 col-form-label">${colName}: </label>
+        <div class="col-sm-10">
+            <p class="col-form-label">{{row.${col[0]}}}</p>
+        </div>
+    </div>`
+            }
+        }
+        return content
     }
 
     resourceShow() {
