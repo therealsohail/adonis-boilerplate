@@ -48,7 +48,9 @@ Route.group(() => {
     Route.get('add-user', 'admin/UserController.create')
     Route.post('user', 'admin/UserController.store').validator('AddUser')
 
+
 }).prefix('admin/').middleware(['authenticated'])
+
 
 Route.get('404', ({view}) => {
     return view.render('404')
@@ -75,8 +77,6 @@ Route.group(() => {
     Route.post('forgot-password', 'Api/UserController.forgotPassword').validator('ForgotPassword')
     Route.post('verify-otp', 'Api/UserController.verifyOTP').validator('VerifyOTP')
     Route.post('reset-password', 'Api/UserController.resetPassword').validator('ResetPassword')
-
-
 }).prefix('api/v1/')
 
 /*JWT Requests*/
@@ -93,3 +93,8 @@ Route.group(() => {
         response.json({status: true, message:"Logged out successfully", data: {}})
     })
 }).prefix('api/v1/').middleware(['jwt'])
+
+
+
+
+            

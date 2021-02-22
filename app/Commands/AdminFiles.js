@@ -53,7 +53,7 @@ class ${this.module}Controller extends BaseController {
     }
 
     async store({response, view, request, session}) {
-        let input = request.except(['password_confirmation','_csrf','_method'])
+        let input = request.only(${this.args.name}Repo.model.fillable)
         let ${this.camel} = await ${this.module}Repo.store(input, request)
         await session.flash({success: '${this.lowercase} created successfully!'})
         return response.redirect('/admin/${this.pluralKebab}');
@@ -85,7 +85,7 @@ class ${this.module}Controller extends BaseController {
     }
 
     async update({response, view, request, session}) {
-     const input = request.except(['_csrf','password_confirmation','_method'])
+     const input = request.only(${this.args.name}Repo.model.fillable)
         let res = await ${this.module}Repo.update(request.params.id, input)
         if (!res){
             await session.flash({error: 'Record not found'})
@@ -360,7 +360,11 @@ module.exports = ${this.module}Controller
 
         if (colArray.length > 0) {
             for (let col of colArray) {
-                content += `<td>{{row.${col[0]}}}</td>`
+                if(col[1].type === 'datetime'){
+                    content += `<td>{{dateFormat(row.${col[0]},constant('date_format'))}}</td>`
+                }else{
+                    content += `<td>{{row.${col[0]}}}</td>`
+                }
             }
 
         }
@@ -390,12 +394,22 @@ module.exports = ${this.module}Controller
         if (colArray.length > 0) {
             for (let col of colArray) {
                 let colName = _case.sentence(_case.lower(col[0]))
-                content += `<div class="form-group row">
+                if(col[1].type === 'datetime'){
+                    content += `<div class="form-group row">
+            <label for="inputName" class="col-sm-2 col-form-label">${colName}: </label>
+        <div class="col-sm-10">
+            <p class="col-form-label">{{dateFormat(row.${col[0]},constant('date_format'))}}</p>
+        </div>
+    </div>`
+                }else{
+                    content += `<div class="form-group row">
             <label for="inputName" class="col-sm-2 col-form-label">${colName}: </label>
         <div class="col-sm-10">
             <p class="col-form-label">{{row.${col[0]}}}</p>
         </div>
     </div>`
+                }
+
             }
         }
         return content

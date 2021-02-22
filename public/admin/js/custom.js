@@ -62,7 +62,7 @@ if ($('body').has('#editor1').length > 0) {
 }
 
 /*EXPORT, PDF OPTIONS IN DATATABLE*/
-function dataTableInit(title, ordering=true, autowidth=false){
+function dataTableInit(title, ordering=false, autowidth=false){
     let modelNameForPdf = ''
     if ($('body').has('#datatable').length > 0) {
         let headers = $("#datatable th").length

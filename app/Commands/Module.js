@@ -26,12 +26,13 @@ class Module extends Command {
 
         let kebab = _case.kebab(args.name)
         let pluralKebab = pluralize.plural(kebab)
-        let lowercase =  _case.lower(args.name)
+        let lowercase = _case.lower(args.name)
 
 
-        let admin = new (use('App/Commands/AdminFiles'))(args,options)
-        let apiController = new (use('App/Commands/ApiController'))(args,options)
-        let apiRepository = new (use('App/Commands/ApiRepository'))(args,options)
+        let admin = new (use('App/Commands/AdminFiles'))(args, options)
+        let apiController = new (use('App/Commands/ApiController'))(args, options)
+        let apiRepository = new (use('App/Commands/ApiRepository'))(args, options)
+        let modelModule = new (use('App/Commands/Model'))(args, options)
         /****************************
          *VALIDATION
          ****************************/
@@ -100,27 +101,7 @@ class Module extends Command {
         let singular_model_name = pluralize.singular(args.model)
         //SQL MODEL CODE
 
-        let model_sql_content = `'use strict'
-/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const Model = use('Model')
-const moment = use('moment')
-
-class ${singular_model_name} extends Model {
-    static get table() {
-        return '${pluralize.plural(_case.snake(args.model))}'
-    }
-
-    static get primaryKey() {
-        return 'id'
-    }
-
-    // getCreatedAtAgo({created_at}) {
-    //     let formattedDate = moment(created_at).format(Config.get('constants.db_date_format'))
-    //     return moment(formattedDate, Config.get('constants.db_date_format')).fromNow()
-    // }
-}
-
-module.exports = ${args.model}`
+        let model_sql_content = await modelModule.sqlModel()
 
 
         //NOSQL MODEL CODE
@@ -262,7 +243,7 @@ Route.put('${kebab}/:id', 'admin/${args.name}Controller.update')
         if (askAdmin === 'y') {
 
             let module = args.name
-            let lowercase =  _case.lower(module) //firstmodule
+            let lowercase = _case.lower(module) //firstmodule
             let pascal = _case.pascal(module)
             let kebab = _case.kebab(module)
             let camel = _case.camel(module)
@@ -319,7 +300,7 @@ Route.put('${kebab}/:id', 'admin/${args.name}Controller.update')
                 this.info(args.model + " (create-fields.edge) is created")
             }
 
-            const resourceShowFields= await this.pathExists(`resources/views/admin/${kebab}/show-fields.edge`)
+            const resourceShowFields = await this.pathExists(`resources/views/admin/${kebab}/show-fields.edge`)
             if (resourceShowFields) {
                 this.warn(args.name + " (show-fields.edge) already exists")
             } else {
@@ -327,7 +308,7 @@ Route.put('${kebab}/:id', 'admin/${args.name}Controller.update')
                 this.info(args.model + " (show-fields.edge) is created")
             }
 
-            const resourceDatatableActions= await this.pathExists(`resources/views/admin/${kebab}/datatable-actions.edge`)
+            const resourceDatatableActions = await this.pathExists(`resources/views/admin/${kebab}/datatable-actions.edge`)
             if (resourceDatatableActions) {
                 this.warn(args.name + " (datatable-actions.edge) already exists")
             } else {
@@ -335,18 +316,18 @@ Route.put('${kebab}/:id', 'admin/${args.name}Controller.update')
                 this.info(args.model + " (datatable-actions.edge) is created")
             }
 
-            const resourceFields= await this.pathExists(`resources/views/admin/${kebab}/fields.edge`)
+            const resourceFields = await this.pathExists(`resources/views/admin/${kebab}/fields.edge`)
             if (resourceFields) {
                 this.warn(args.name + " (fields.edge) already exists")
             } else {
                 await this.writeFile(`resources/views/admin/${kebab}/fields.edge`, await admin.resourceFields())
                 this.info(args.model + " (fields.edge) is created")
             }
-        }
 
-        /*ADD SIDEBAR MENU ITEM*/
-        try {
-            let sidebarContent = `
+
+            /*ADD SIDEBAR MENU ITEM*/
+            try {
+                let sidebarContent = `
 
 <!--${args.name}-->
 <li class="nav-item has-treeview menu-open">
@@ -358,19 +339,18 @@ Route.put('${kebab}/:id', 'admin/${args.name}Controller.update')
         </p>
     </a>
 </li>`
-            fs.appendFileSync('resources/views/admin/layouts/sidebar-listing.edge', sidebarContent);
-            this.info('Sidebar menu added')
-        } catch (err) {
-            this.error(err)
-            this.error("Unable to add sidebar menu in views/admin/layouts/sidebar-listing.edge")
+                fs.appendFileSync('resources/views/admin/layouts/sidebar-listing.edge', sidebarContent);
+                this.info('Sidebar menu added')
+            } catch (err) {
+                this.error(err)
+                this.error("Unable to add sidebar menu in views/admin/layouts/sidebar-listing.edge")
+            }
         }
 
 
         //ALL DONE
         this.success(args.name + " module has been generated. Make sure to adjust the followings:")
         console.log(this.chalk.blue('\t=> Move route to route group (if any)\n\t=> Check DB Table related to this model exists\n\t=> Add rules in Validator and link to route (if required)'))
-
-        return true
     }
 }
 

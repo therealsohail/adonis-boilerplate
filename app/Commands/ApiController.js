@@ -47,14 +47,14 @@ class ${this.args.name}Controller extends BaseController {
 
     //Save a record
     async store(ctx) {
-        let input = ctx.request.except(['password_confirmation','_csrf','_method'])
+        let input = ctx.request.only(${this.args.name}Repo.model.fillable)
         let res = await ${this.args.name}Repo.store(input, ctx.request)
         return ctx.response.json(this.globalResponse(true, "Record created successfully!", res))
     }
 
     //Update a record
     async update(ctx) {
-        const input = ctx.request.except(['_csrf','password_confirmation','_method'])
+        const input = ctx.request.only(${this.args.name}Repo.model.fillable)
         let res = await ${this.args.name}Repo.update(ctx.request.params.id, input)
         if (!res){
             return ctx.response.json(this.globalResponse(false, "Record not found!",{}))

@@ -20,10 +20,10 @@ class UserRepository extends BaseRepository {
         let input = request.only(User.fillable)
         if (request.file('image')) {
             const file = request.file('image', {types: ['image']})
-            input.image = await myHelpers.uploadImage(file, 'users/');
+            input.image = await myHelpers.uploadImage(file, 'users/')
         }
-        input.is_verified = 1;
-        input.is_approved = 1;
+        input.is_verified = 1
+        input.is_approved = 1
         return await super.store(input, response);
     }
 
