@@ -37,9 +37,7 @@ Route.get('admin/login', ({auth, response, view}) => {
 })
 Route.post('admin/login', 'admin/UserController.login').validator('AdminLogin')
 Route.group(() => {
-    Route.get('dashboard', ({view}) => {
-        return view.render('admin.dashboard', {title: "Dashboard"})
-    }).as('admin.dashboard')
+    Route.get('dashboard', 'admin/UserController.dashboard').as('admin.dashboard')
     Route.get('users', 'admin/UserController.index')
     Route.get('user/:id', 'admin/UserController.show')
     Route.get('delete-user/:id', 'admin/UserController.destroy')

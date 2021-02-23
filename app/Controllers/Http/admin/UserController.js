@@ -1,7 +1,7 @@
 'use strict'
 
 const userRepo = use('App/Repositories/UserRepository')
-const userDeviceRepo = use('App/Repositories/UserDeviceRepository')
+const UserDeviceRepo = use('App/Repositories/UserDeviceRepository')
 const roleRepo = use('App/Repositories/RoleRepository')
 const BaseController = use('BaseController')
 const Role = use('App/Models/Sql/Role')
@@ -9,11 +9,22 @@ const myHelpers = use('myHelpers')
 const Mail = use('Mail')
 const Env = use('Env')
 const Hash = use('Hash')
+const moment = use('moment')
 
 class UserController extends BaseController {
 
     constructor() {
         super(userRepo)
+    }
+
+    async dashboard(ctx){
+        let data = {}
+        data.total_users = (await userRepo.model.query().getCount()).toString()
+        data.new_users = (await userRepo.model.query().whereRaw(`DATE(created_at) = '${moment(new Date()).format('YYYY-MM-DD')}'`).getCount()).toString()
+        data.ios = (await UserDeviceRepo.model.query().where({device_type:'ios'}).getCount()).toString()
+        data.android = (await UserDeviceRepo.model.query().where({device_type:'android'}).getCount()).toString()
+        data.title = "Dashboard"
+        return ctx.view.render('admin.dashboard', data)
     }
 
     async login({request, auth, response, view, session}) {
