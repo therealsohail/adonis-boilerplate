@@ -77,6 +77,7 @@ Route.group(() => {
     Route.post('forgot-password', 'Api/UserController.forgotPassword').validator('ForgotPassword')
     Route.post('verify-otp', 'Api/UserController.verifyOTP').validator('VerifyOTP')
     Route.post('reset-password', 'Api/UserController.resetPassword').validator('ResetPassword')
+
 }).prefix('api/v1/')
 
 /*JWT Requests*/

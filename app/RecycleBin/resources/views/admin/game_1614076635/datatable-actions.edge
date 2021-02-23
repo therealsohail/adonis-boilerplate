@@ -1,0 +1,11 @@
+<tr><td>{{row.id}}</td><td>{{row.name}}</td><td>{{row.Publisher}}</td><td>{{row.version}}</td><td>{{dateFormat(row.created_at,constant('date_format'))}}</td><td>{{dateFormat(row.updated_at,constant('date_format'))}}</td><td>
+        <form action="{{baseUrl('admin/delete-game/')+row.id}}" method="GET">
+            <a href="{{baseUrl('admin/game/')+row.id}}" class="btn btn-primary"><i
+                        class="fas fa-eye"></i></a>
+            <a href="{{baseUrl('admin/edit-game/')+row.id}}" class="btn btn-info"><i
+                        class="fas fa-edit"></i></a>
+            <a href="#" class="delete-btn btn btn-danger"><i
+                        class="fas fa-trash-alt"></i></a>
+        </form>
+    </td>
+</tr>

@@ -321,7 +321,7 @@ module.exports = ${this.module}Controller
     <!--</div>-->
 <!--</div>-->
 
-<div class="col-sm-6">
+<div class="col-sm-12">
     <button class="btn btn-primary">Send</button>
 </div>
 `
