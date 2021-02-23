@@ -32273,3 +32273,22 @@ a.text-muted:hover {
 }
 
 /*# sourceMappingURL=adminlte.css.map */
+
+
+td{
+    outline:none !important;
+}
+
+/*HIDE EXTRA BUTTONS*/
+.brand-link img {
+    max-width: 150px;
+    margin: auto;
+    display: block;
+    width: 100%;
+    max-height: 70px;
+    object-fit: contain;
+}
+
+ul.navbar-nav.ml-auto {
+    display: none;
+}
