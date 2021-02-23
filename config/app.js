@@ -2,7 +2,7 @@
 
 /** @type {import('@adonisjs/framework/src/Env')} */
 const Env = use('Env')
-
+const Config = use('Config')
 module.exports = {
 
   /*
@@ -16,7 +16,7 @@ module.exports = {
   |
   */
 
-  name: Env.get('APP_NAME', 'AdonisJs'),
+  name: Config.get('constants.projectName'),
 
   /*
   |--------------------------------------------------------------------------
