@@ -76,6 +76,8 @@ Route.group(() => {
     Route.post('verify-otp', 'Api/UserController.verifyOTP').validator('VerifyOTP')
     Route.post('reset-password', 'Api/UserController.resetPassword').validator('ResetPassword')
 
+
+
 }).prefix('api/v1/')
 
 /*JWT Requests*/
@@ -92,6 +94,9 @@ Route.group(() => {
         response.json({status: true, message:"Logged out successfully", data: {}})
     })
 }).prefix('api/v1/').middleware(['jwt'])
+
+
+
 
 
 

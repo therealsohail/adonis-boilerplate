@@ -34,7 +34,6 @@ function ajaxPost(url, data, callback, formdata = true) {
             }
         });
     }
-
 }
 
 function ajaxGet(url, queryParam, callback) {
