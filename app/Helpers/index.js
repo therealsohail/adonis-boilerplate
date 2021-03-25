@@ -51,30 +51,63 @@ module.exports = {
         await this.resizeImage(uploadPath, random_name, uploadPath)
         return file.fileName;
     },
-    async sendNotification(title = null, body = null, data = {}, tokens) {
+    async sendNotification(title = null, body = null, payload = {}, devices) {
+
+
+
         var serverKey = Config.get('constants.fcm_key');
         var fcm = await new FCM(serverKey);
 
-        var message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
-            registration_ids: tokens,
-            // collapse_key: 'green',
+        let iosTokens = devices.flatMap((device)=> device.device_type === 'ios'?  device.device_token : [])
+        let androidTokens = devices.flatMap((device)=> device.device_type === 'android'?  device.device_token : [])
 
-            notification: {
-                title: title,
-                body: body
-            },
 
-            data: data
-        };
-
-        fcm.send(message, function (err, response) {
-                if (err) {
-                    // console.log('error')
-                } else {
-                    // console.log('success', response)
+        /*FOR ANDROID*/
+        if(androidTokens){
+            let message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
+                registration_ids: androidTokens,
+                // collapse_key: 'green',
+                data:{
+                    title,
+                    body
                 }
+            };
+            message.data = {...message.data, ...payload}
+
+            fcm.send(message, function (err, response) {
+                    if (err) {
+                        Logger.error(err)
+                    } else {
+                        Logger.info(response)
+                    }
+                }
+            );
+        }
+
+
+        /*FOR IOS*/
+        if(iosTokens)
+        {
+            let message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
+                registration_ids: iosTokens,
+                // collapse_key: 'green',
+
+                notification: {
+                    title: title,
+                    body: body
+                },
+                data: payload
             }
-        );
+
+            fcm.send(message, function (err, response) {
+                    if (err) {
+                        Logger.error(err)
+                    } else {
+                        Logger.info(response)
+                    }
+                }
+            )
+        }
     },
     async sendWebSocketNotification(title, body) {
 
