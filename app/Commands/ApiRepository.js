@@ -35,8 +35,6 @@ class ${this.args.name}Repository extends BaseRepository {
             const file = request.file('media', {types: ['media']})
             input.media = await myHelpers.uploadFile(file, 'users/')
         }
-        input.is_verified = 1
-        input.is_approved = 1
         return await this.model.create(input);
     }
 
