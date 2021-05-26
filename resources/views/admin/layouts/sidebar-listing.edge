@@ -1,10 +1,9 @@
-
 <li class="nav-item has-treeview menu-open">
     <a href="{{baseUrl('admin/dashboard')}}"
        class="nav-link {{ request.match(['/admin/dashboard'])? 'active': '' }}">
         <i class="nav-icon fas fa-chart-pie"></i>
         <p>
-           Dashboard
+            Dashboard
         </p>
     </a>
 
@@ -17,6 +16,18 @@
         </p>
     </a>
 </li>
+
+<!--Pages-->
+<li class="nav-item has-treeview menu-open">
+    <a href="{{baseUrl('admin/pages')}}"
+       class="nav-link {{ request.match(['/admin/pages','/admin/edit-page/:id','/admin/page/:id','/admin/page','/admin/add-page']) ? 'active': '' }}">
+        <i class="nav-icon fa fa-file"></i>
+        <p>
+            Pages
+        </p>
+    </a>
+</li>
+
 
 
 
