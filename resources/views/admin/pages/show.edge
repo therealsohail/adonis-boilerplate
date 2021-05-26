@@ -1,0 +1,44 @@
+@layout('admin.layouts.app')
+@section('css')
+    @super
+@endsection
+@section('actions')
+    @super
+    <div class="btn-group" style="margin-top: -10px;">
+
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+            Action
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{baseUrl('admin/edit-page/')+page.id}}">
+                <i class="fas fa-edit"></i> Edit</a>
+            <a class="dropdown-item" href="{{baseUrl('admin/pages')}}">
+                <i class="fas fa-arrow-left"></i> Back</a>
+            <div class="dropdown-divider"></div>
+            <form action="{{baseUrl('admin/delete-page/')+page.id}}" method="GET">
+                <a class="dropdown-item btn btn-danger delete-btn" href="#">
+                    <i class="fas fa-trash-alt"></i> Delete
+                </a>
+            </form>
+        </div>
+
+    </div>
+@endsection
+@section('content')
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            @include('admin.pages.show-fields')
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+@section('scripts')
+    @super
+@endsection

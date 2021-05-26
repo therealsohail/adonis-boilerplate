@@ -1,0 +1,46 @@
+@layout('admin.layouts.app')
+@section('css')
+    @super
+@endsection
+@section('content')
+    <section class="content">
+        <div class="container-fluid">
+            @if(flashMessage('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ flashMessage('error') }}
+                </div>
+            @elseif(flashMessage('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ flashMessage('success') }}
+                </div>
+            @endif
+            <a href="{{baseUrl('admin/page')}}">
+                <button class="btn btn-primary">Add New</button>
+            </a>
+            <div class="card mt-2">
+                <div class="card-body">
+                    <table class="table table-bordered table-striped" id="datatable">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Slug</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @!each((page, index) in pages,include = 'admin.pages.datatable-actions')
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+@section('scripts')
+    @super
+    <script>
+        $(function () {
+            dataTableInit('{{title}}')
+        });
+    </script>
+@endsection

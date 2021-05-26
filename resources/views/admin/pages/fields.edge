@@ -1,0 +1,27 @@
+<div class="col-sm-6">
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" name="title" class="form-control" value="{{ old('title', page.title) }}"
+               required>
+    </div>
+</div>
+<div class="col-sm-6">
+    <div class="form-group">
+        <label>Slug</label>
+        <input type="text" name="slug" class="form-control" value="{{ old('slug', page.slug) }}"
+               readonly required>
+    </div>
+</div>
+<div class="col-sm-12">
+    <div class="form-group">
+        <label>Description</label>
+        <textarea name="content" class="form-control" id="editor1"
+                  rows="10">{{ old('content', page.content) }}</textarea>
+    </div>
+</div>
+<div class="col-sm-12">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+
+
+

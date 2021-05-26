@@ -1,0 +1,15 @@
+<tr>
+    <td>{{page.title}}</td>
+    <td>{{page.slug}}</td>
+    <td>
+        <form action="{{baseUrl('admin/delete-page/')+page.id}}" method="GET">
+            <a href="{{baseUrl('admin/page/')+page.id}}" class="btn btn-primary"><i
+                        class="fas fa-eye"></i></a>
+            <a href="{{baseUrl('admin/edit-page/')+page.id}}" class="btn btn-info"><i
+                        class="fas fa-edit"></i></a>
+            <a href="#" class="delete-btn btn btn-danger"><i
+                        class="fas fa-trash-alt"></i></a>
+        </form>
+    </td>
+</tr>
+
