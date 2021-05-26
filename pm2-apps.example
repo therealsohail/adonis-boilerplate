@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "boilerplate",
+      "script": "./server.js",
+      "exec_mode": "cluster",
+      "instances": "max"
+    },{
+      "name": "boilerplate-cron",
+      "script": "node  ace run:scheduler",
+      "exec_mode": "fork"
+    }
+  ]
+}
