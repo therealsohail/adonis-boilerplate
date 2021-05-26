@@ -1,6 +1,6 @@
 'use strict'
 
-class ApiRepository{
+class ApiRepository {
 
 
     constructor(args, options) {
@@ -30,18 +30,17 @@ class ${this.args.name}Repository extends BaseRepository {
         return await this.model.find(id)
     }
 
-    async store(input, file=null){
-        let res = await this.model.create(input)
-
-        /*For file upload*/
-        if (file){
-            /*todoo file upload here*/
+    async store(input, request=null){
+        if (request && request.file('image')) {
+            const file = request.file('image', {types: ['image']})
+            input.image = await myHelpers.uploadFile(file, 'users/')
         }
-
-        return res
+        input.is_verified = 1
+        input.is_approved = 1
+        return await super.store(input, response);
     }
 
-    async update(id, input, file=null){
+    async update(id, input, request=null){
         let modelObj = await this.model.find(id)
 
         //check if the row related to this id exists
@@ -50,8 +49,9 @@ class ${this.args.name}Repository extends BaseRepository {
         }
 
         /*FILE UPLOAD*/
-        if(file){
-            /*todoo file upload here*/
+        if (request && request.file('image')) {
+            const file = request.file('image', {types: ['image']})
+            input.image = await myHelpers.uploadFile(file, 'users/')
         }
 
         //assigning input data in db fields
