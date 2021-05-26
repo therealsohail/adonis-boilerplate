@@ -1,0 +1,446 @@
+{
+	"info": {
+		"_postman_id": "313745f1-4507-41e0-917a-79b11b4012d5",
+		"name": "Boilerplate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.data.access_token.token);\r",
+									"postman.setEnvironmentVariable(\"refresh_token\", jsonData.data.access_token.refreshToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "waqar@yopmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123123",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123123",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "waqartek",
+									"type": "text"
+								},
+								{
+									"key": "full_name",
+									"value": "Waqar Adil",
+									"type": "text"
+								},
+								{
+									"key": "dob",
+									"value": "2021-01-01",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "language_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "country_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/waqar/Desktop/Childs-play-series-e1556819259502.jpg"
+								},
+								{
+									"key": "device_type",
+									"value": "android",
+									"type": "text"
+								},
+								{
+									"key": "device_token",
+									"value": "api_hjkaldshfjakshldfjaklhjaksdhfjkl",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}register",
+							"host": [
+								"{{baseUrl}}register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Social Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.data.access_token.token);\r",
+									"postman.setEnvironmentVariable(\"refresh_token\", jsonData.data.access_token.refreshToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Andrew\",\r\n    \"email\":\"andrew@yopmail.com\",\r\n    \"device_type\":\"android\",\r\n    \"device_token\":\"api_fjakdlfjasklfjkasdlf\",\r\n    \"social_platform\":\"facebook\",\r\n    \"client_id\":\"jkajdsfkljasdklfaf\",\r\n    \"token\":\"adsfkasjfkasdjfasklfjds\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}social-login",
+							"host": [
+								"{{baseUrl}}social-login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.data.access_token.token);\r",
+									"postman.setEnvironmentVariable(\"refresh_token\", jsonData.data.access_token.refreshToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"waqar@yopmail.com\",\r\n    \"password\":\"123123\",\r\n    \"password_confirmation\":\"123123\",\r\n    \"device_type\":\"android\",\r\n    \"device_token\":\"api_fjakdlfjasklfjkasdlf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}login",
+							"host": [
+								"{{baseUrl}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh_token\": \"0b9739141dea27fed134fd7058642d357xfXhY/zMwcKAEND2ykqZjkv7pa6ztixPe4wD3sxZdu7pHL7gpJQeXyJr0IgO/JY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}refresh-token",
+							"host": [
+								"{{baseUrl}}refresh-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"waqar@yopmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}forgot-password",
+							"host": [
+								"{{baseUrl}}forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"current_password\": \"123123\",\r\n    \"password\": \"123456\",\r\n    \"password_confirmation\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}change-password",
+							"host": [
+								"{{baseUrl}}change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify OTP for forget password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"waqar@yopmail.com\",\r\n    \"verification_code\":6781\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}verify-otp",
+							"host": [
+								"{{baseUrl}}verify-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"waqar@yopmail.com\",\r\n    \"verification_code\":6781,\r\n    \"password\": \"123123\",\r\n    \"password_confirmation\":\"123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}reset-password",
+							"host": [
+								"{{baseUrl}}reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}logout",
+							"host": [
+								"{{baseUrl}}logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resend OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"waqar@yopmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}resend-otp",
+							"host": [
+								"{{baseUrl}}resend-otp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pages",
+			"item": [
+				{
+					"name": "About us",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}pages?slug=about-us",
+							"host": [
+								"{{baseUrl}}pages"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "about-us"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Terms and condition",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}pages?slug=terms-and-conditions",
+							"host": [
+								"{{baseUrl}}pages"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "terms-and-conditions"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Privacy Policy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}pages?slug=privacy-policy",
+							"host": [
+								"{{baseUrl}}pages"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "privacy-policy"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
