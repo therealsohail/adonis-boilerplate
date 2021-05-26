@@ -30,17 +30,17 @@ class ${this.args.name}Repository extends BaseRepository {
         return await this.model.find(id)
     }
 
-    async store(input, request=null){
-        if (request && request.file('image')) {
-            const file = request.file('image', {types: ['image']})
-            input.image = await myHelpers.uploadFile(file, 'users/')
+    async store(input, request = null) {
+        if (request && request.file('media')) {
+            const file = request.file('media', {types: ['media']})
+            input.media = await myHelpers.uploadFile(file, 'users/')
         }
         input.is_verified = 1
         input.is_approved = 1
-        return await super.store(input, response);
+        return await this.model.create(input);
     }
 
-    async update(id, input, request=null){
+    async update(id, input, request = null) {
         let modelObj = await this.model.find(id)
 
         //check if the row related to this id exists
@@ -49,8 +49,8 @@ class ${this.args.name}Repository extends BaseRepository {
         }
 
         /*FILE UPLOAD*/
-        if (request && request.file('image')) {
-            const file = request.file('image', {types: ['image']})
+        if (request && request.file('media')) {
+            const file = request.file('media', {types: ['media']})
             input.image = await myHelpers.uploadFile(file, 'users/')
         }
 
