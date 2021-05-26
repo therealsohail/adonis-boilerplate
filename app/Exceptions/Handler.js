@@ -36,6 +36,11 @@ class ExceptionHandler extends BaseExceptionHandler {
         let responseError
         switch (error.code) {
 
+            /*Foreign Key Error*/
+            case 'ER_NO_REFERENCED_ROW_2':
+                responseError = "Reference error: Invalid data provided."
+                break
+
             case 'E_INVALID_JWT_TOKEN':
                 responseError = unauthorizedCodeMessage
                 break
@@ -59,7 +64,7 @@ class ExceptionHandler extends BaseExceptionHandler {
         }
 
         if (responseError) {
-            return response.status(error.status).json({status:false, message: responseError, data:{}})
+            return response.status(error.status).json({status:false, message: responseError, data:null})
         }
 
         /*******************************
@@ -97,7 +102,7 @@ class ExceptionHandler extends BaseExceptionHandler {
 
 
         Logger.info(myHelpers.logMsg(errorBody))
-        return response.status(error.status).json({status:false, message: errorMessage, data:{}})
+        return response.status(error.status).json({status:false, message: errorMessage, data:null})
 
     }
 

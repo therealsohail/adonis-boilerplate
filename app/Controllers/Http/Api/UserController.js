@@ -132,6 +132,13 @@ class UserController extends BaseController {
         return ctx.response.json(allUsers)
     }
 
+    async resendOTP(ctx) {
+        let email = ctx.request.input('email', null)
+        await userRepo.generateAndSendOTP(email);
+        return this.globalResponse(true, "Code has been sent successfully")
+    }
+
+
 }
 
 module.exports = UserController

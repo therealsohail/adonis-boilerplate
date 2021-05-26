@@ -10,7 +10,13 @@ module.exports = {
     notFoundUser: '/frontend/images/user.jpg',
     fcm_key: 'AAAAeGyD_X8:APA91bFwYsKRqOAcX54ytuaSdAd95nagu_D4rp3p3-fq5CnTzrD8pVYt_eDxa6W5adgfDCs8jEOmWhJFscLkKF1GTlqqL7lO_cIcrpRiztGiNymhxfZ6nQRPNc6qEPrcUgGUNUtfVcCB',
     projectName: "Boiler Plate",
-    website:"https://etherlegends.io",
-    s3Path:'uploads/card_image',
-    limit:10
+    website: "https://etherlegends.io",
+    s3Path: 'uploads/card_image',
+    limit: 10,
+    adminLimit: 1000,
+    imageResize: {
+        medium: 500,
+        small: 100
+    },
+    uploadChannel: 'local'
 }

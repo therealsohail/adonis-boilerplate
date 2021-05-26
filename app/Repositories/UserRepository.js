@@ -6,6 +6,9 @@ const Config = use('Config')
 const myHelpers = use('myHelpers')
 const User = use('App/Models/Sql/User')
 const Hash = use('Hash')
+const ExceptionWithCode = use('App/Exceptions/ExceptionWithCode')
+const Mail = use('Mail')
+const Env = use('Env')
 
 class UserRepository extends BaseRepository {
 
@@ -79,7 +82,26 @@ class UserRepository extends BaseRepository {
         return users.toJSON();
     }
 
-    deleteAllUsers = () => this.model.deleteMany({})
+    async generateAndSendOTP(email) {
+        /*Generate OTP*/
+        let otp_code = Math.floor(1000 + Math.random() * 9000);
+
+        let user = await this.findByEmail(email)
+
+        if (!user)
+            throw new ExceptionWithCode("Email does not exist!", 404)
+
+        user.verification_code = otp_code
+        await user.save()
+
+        /*Send Email*/
+        await Mail.send('mails.verification-code', {otp_code, name: user.username}, (message) => {
+            message
+                .to(user.email)
+                .from(Env.get('MAIL_FROM_ADDRESS'), Env.get('MAIL_FROM_NAME'))
+                .subject('Verification code')
+        })
+    }
 
 }
 

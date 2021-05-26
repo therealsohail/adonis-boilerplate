@@ -8,5 +8,5 @@ UserHook.rolesCsv = async (model) => {
     await roles.map((role, index) => {
         roles_csv.push(role.display_name)
     })
-    return model.rolesCsv = roles_csv.join();
+    return model.$sideLoaded.rolesCsv = roles_csv.join();
 }

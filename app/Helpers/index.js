@@ -26,18 +26,27 @@ module.exports = {
             },
             versions: [{
                 prefix: 'medium_',
-                width: 512,
-                height: 256
+                width: Config.get('constants.imageResize.medium'),
+                // height: 256
             }, {
                 quality: 100,
                 prefix: 'small_',
-                width: 128,
-                height: 64
+                width: Config.get('constants.imageResize.small'),
+                // height: 64
             }]
         }
         ImageResizer(sourcePath + sourceImage, setup)
     },
-    async uploadImage(file, dir) {
+    async uploadFile(file, path){
+        let uploadChannel = Config.get('constants.uploadChannel')
+        switch (uploadChannel) {
+            case 'local':
+                return await this.uploadFileLocally(file, path)
+            case 's3':
+                return await this.uploadFileS3(file, path)
+        }
+    },
+    async uploadFileLocally(file, dir) {
         let random_name = `${new Date().getTime()}.${file.extname}`
         let uploadPath = 'public/' + dir;
         await file.move('public', {
@@ -46,28 +55,30 @@ module.exports = {
         })
 
         if (!file.moved()) {
-            return response.status(500).json({message: file.error().message})
+            throw new Error(file.error().message)
         }
-        await this.resizeImage(uploadPath, random_name, uploadPath)
+
+        if(file.type === 'image'){
+            await this.resizeImage(uploadPath, random_name, uploadPath)
+        }
         return file.fileName;
     },
     async sendNotification(title = null, body = null, payload = {}, devices) {
 
 
-
         var serverKey = Config.get('constants.fcm_key');
         var fcm = await new FCM(serverKey);
 
-        let iosTokens = devices.flatMap((device)=> device.device_type === 'ios'?  device.device_token : [])
-        let androidTokens = devices.flatMap((device)=> device.device_type === 'android'?  device.device_token : [])
+        let iosTokens = devices.flatMap((device) => device.device_type === 'ios' ? device.device_token : [])
+        let androidTokens = devices.flatMap((device) => device.device_type === 'android' ? device.device_token : [])
 
 
         /*FOR ANDROID*/
-        if(androidTokens){
+        if (androidTokens) {
             let message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
                 registration_ids: androidTokens,
                 // collapse_key: 'green',
-                data:{
+                data: {
                     title,
                     body
                 }
@@ -86,8 +97,7 @@ module.exports = {
 
 
         /*FOR IOS*/
-        if(iosTokens)
-        {
+        if (iosTokens) {
             let message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
                 registration_ids: iosTokens,
                 // collapse_key: 'green',
@@ -149,13 +159,18 @@ module.exports = {
 
         }
     },
-    async uploadFileS3(fileName, random_name, path) {
+    async uploadFileS3(file, path) {
         /* INSTRUCTIONS */
         // - use env(S3_URL) for full url
         // for medium variation
         // let medium_image = image.split("/")
         // let path = medium_image[0] + '/medium_' + medium_image[1]
         /* END INSTRUCTIONS */
+
+
+        let fileName = file.tmpPath
+        let random_name = `${new Date().getTime()}.${file.extname}`
+
         const s3 = await new AWS.S3({
             accessKeyId: Env.get('S3_KEY'),
             secretAccessKey: Env.get('S3_SECRET')
@@ -168,7 +183,7 @@ module.exports = {
             Bucket: Env.get('S3_BUCKET'),
             ACL: 'public-read'
         };
-        await sharp(fileName).resize(400).toBuffer()
+        await sharp(fileName).resize(Config.get('constants.imageResize.medium')).toBuffer()
             .then(async buffer => {
                 params.Body = buffer;
                 params.Key = path + "medium_" + random_name;
@@ -180,7 +195,7 @@ module.exports = {
             }).catch(function (err) {
                 console.log("Got Error");
             });
-        await sharp(fileName).resize(80).toBuffer()
+        await sharp(fileName).resize(Config.get('constants.imageResize.small')).toBuffer()
             .then(async buffer => {
                 params.Body = buffer;
                 params.Key = path + "small_" + random_name;
