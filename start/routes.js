@@ -46,7 +46,14 @@ Route.group(() => {
     Route.get('add-user', 'admin/UserController.create')
     Route.post('user', 'admin/UserController.store').validator('AddUser')
 
-
+    /* Page route */
+    Route.get('pages', 'admin/PageController.index')
+    Route.post('page', 'admin/PageController.store').validator('AddPage')
+    Route.get('page', 'admin/PageController.create')
+    Route.get('page/:id', 'admin/PageController.show')
+    Route.get('delete-page/:id', 'admin/PageController.destroy')
+    Route.get('edit-page/:id', 'admin/PageController.edit')
+    Route.put('page/:id', 'admin/PageController.update').validator('AddPage')
 }).prefix('admin/').middleware(['authenticated'])
 
 
@@ -76,7 +83,9 @@ Route.group(() => {
     Route.post('verify-otp', 'Api/UserController.verifyOTP').validator('VerifyOTP')
     Route.post('reset-password', 'Api/UserController.resetPassword').validator('ResetPassword')
 
-
+    /*Pages Routes*/
+    Route.resource('pages', 'Api/PageController')
+    Route.get('page/:slug', 'Api/PageController.getPage');
 
 }).prefix('api/v1/')
 
