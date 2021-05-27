@@ -6,51 +6,52 @@
  */
 
 
-class BaseController{
+class BaseController {
 
-  constructor(repo){
-    this.repo = repo
-  }
-
-  async index(ctx){
-    return this.repo.index(ctx)
-  }
-
-  async store({request,response}){
-    return this.repo.store(request,response)
-  }
-
-  async show({params,response}){
-    return this.repo.show(params,response)
-  }
-
-  async update({params,request,response}){
-    return this.repo.update(params,request,response)
-  }
-
-  async destroy({params,response}){
-    return this.repo.destroy(params,response)
-  }
-
-  globalResponse(status, message, data) {
-    return {
-      status: status,
-      message: message || "",
-      data: data || {}
+    constructor(repo) {
+        this.repo = repo
     }
-  }
 
-  async updateColumns(data, where){
-    return this.repo.updateColumns(data,where)
-  }
+    async index(ctx) {
+        return this.repo.index(ctx)
+    }
 
-  async findBy(where){
-    return this.repo.findBy(where)
-  }
+    async store({request, response}) {
+        return this.repo.store(request, response)
+    }
 
-  async findByMany(where){
-    return this.repo.findByMany(where)
-  }
+    async show({params, response}) {
+        return this.repo.show(params, response)
+    }
+
+    async update({params, request, response}) {
+        return this.repo.update(params, request, response)
+    }
+
+    async destroy({params, response}) {
+        return this.repo.destroy(params, response)
+    }
+
+    globalResponse(status, message, data) {
+        let response = {
+            status: status,
+            message: message || "",
+            data: data ? typeof data.toJSON != 'undefined' ? data.toJSON() : data : null
+        }
+        return response
+    }
+
+    async updateColumns(data, where) {
+        return this.repo.updateColumns(data, where)
+    }
+
+    async findBy(where) {
+        return this.repo.findBy(where)
+    }
+
+    async findByMany(where) {
+        return this.repo.findByMany(where)
+    }
 
 }
 
