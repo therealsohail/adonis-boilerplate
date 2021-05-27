@@ -37,7 +37,7 @@ module.exports = {
         }
         ImageResizer(sourcePath + sourceImage, setup)
     },
-    async uploadFile(file, path){
+    async uploadFile(file, path) {
         let uploadChannel = Config.get('constants.uploadChannel')
         switch (uploadChannel) {
             case 'local':
@@ -58,7 +58,7 @@ module.exports = {
             throw new Error(file.error().message)
         }
 
-        if(file.type === 'image'){
+        if (file.type === 'image') {
             await this.resizeImage(uploadPath, random_name, uploadPath)
         }
         return file.fileName;
@@ -259,5 +259,20 @@ module.exports = {
                 console.log("error:", err)
             }
         });
+    },
+    getImageVersion(imagePath, version) {
+        let fileArray = imagePath.split('/')
+        let fileName = "", path = ""
+        fileName = fileArray[fileArray.length - 1]
+        let newName = version + '_' + fileName
+        imagePath = imagePath.replace(fileName, newName)
+        return this.imageWithBaseURLOrNotFound(imagePath)
+    },
+    imageWithBaseURLOrNotFound(newImage) {
+        if (fs.existsSync('./public/' + newImage)) {
+            return Env.get('APP_URL') + '/' + newImage
+        } else {
+            return Env.get('APP_URL') + '/' + Config.get('constants.notFound')
+        }
     }
 }

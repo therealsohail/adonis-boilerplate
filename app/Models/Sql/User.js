@@ -64,43 +64,25 @@ class User extends Model {
     }
 
 
-    getImageUrl({image}) {
-        if (image != null && !image.startsWith("http")) {
-            let path = 'public/' + image
-            if (fs.existsSync(path)) {
-                return Env.get('APP_URL') + '/' + image
-            } else {
-                return Env.get('APP_URL') + '/thumbnail.jpg'
-            }
+    getImageUrl({path}) {
+        if (path != null && !path.startsWith("http")) {
+            return myHelpers.imageWithBaseURLOrNotFound(path)
         }
-        return image;
+        return path;
     }
 
-    getMediumImageUrl({image}) {
-        if (image != null && !image.startsWith("http")) {
-            let medium_image = image.split("/")
-            let path = 'public/' + medium_image[0] + '/medium_' + medium_image[1]
-            if (fs.existsSync(path)) {
-                return Env.get('APP_URL') + '/' + medium_image[0] + '/medium_' + medium_image[1]
-            } else {
-                return Env.get('APP_URL') + '/thumbnail.jpg'
-            }
+    getMediumImageUrl({path}) {
+        if (path != null && !path.startsWith("http")) {
+            return myHelpers.getImageVersion(path, 'medium')
         }
-        return null;
-
+        return path;
     }
 
-    getSmallImageUrl({image}) {
-        if (image != null && !image.startsWith("http")) {
-            let small_image = image.split("/")
-            let path = 'public/' + small_image[0] + '/small_' + small_image[1]
-            if (fs.existsSync(path)) {
-                return Env.get('APP_URL') + '/' + small_image[0] + '/small_' + small_image[1]
-            } else {
-                return Env.get('APP_URL') + '/thumbnail.jpg'
-            }
+    getSmallImageUrl({path}) {
+        if (path != null && !path.startsWith("http")) {
+            return myHelpers.getImageVersion(path, 'small')
         }
-        return null;
+        return path;
     }
 
 }
