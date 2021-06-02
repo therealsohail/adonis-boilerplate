@@ -42,7 +42,7 @@ Route.group(() => {
     Route.get('user/:id', 'admin/UserController.show')
     Route.get('delete-user/:id', 'admin/UserController.destroy')
     Route.get('edit-user/:id', 'admin/UserController.edit')
-    Route.put('user/:id', 'admin/UserController.update')
+    Route.put('user/:id', 'admin/UserController.update').validator('UpdateUser')
     Route.get('add-user', 'admin/UserController.create')
     Route.post('user', 'admin/UserController.store').validator('AddUser')
 
