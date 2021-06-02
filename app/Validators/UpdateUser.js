@@ -12,7 +12,7 @@ class UpdateUser {
     get rules() {
         return {
             username: 'required',
-            password: 'required|min:8|confirmed'
+            password: 'min:8|confirmed'
         }
     }
 
