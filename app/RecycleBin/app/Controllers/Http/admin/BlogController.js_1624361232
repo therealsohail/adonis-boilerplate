@@ -1,0 +1,85 @@
+'use strict'
+        
+const BlogRepo = use('App/Repositories/BlogRepository')
+const BaseController = use('BaseController')
+
+class BlogController extends BaseController {
+
+    constructor() {
+        super(BlogRepo)
+    }
+
+  
+    async index({response, view}) {
+        let data = {}
+        let rows = await BlogRepo.index();
+        data.rows = rows ? rows.toJSON() : []
+        data.title = "Blog"
+        return view.render('admin.blog.index', data)
+    }
+
+    async create({response, view}) {
+        return view.render('admin.blog.create', {
+            title: "Create Blog"
+        })
+    }
+
+    async store({response, view, request, session}) {
+        let input = request.only(BlogRepo.model.fillable)
+        let blog = await BlogRepo.store(input, request)
+        await session.flash({success: 'blog created successfully!'})
+        return response.redirect('/admin/blogs');
+
+    }
+
+    async show({response, view, request, session}) {
+        let id = request.params.id;
+        let row = await BlogRepo.model.find(id);
+        if (row == null) {
+            await session.flash({error: 'blog not found'})
+            return response.redirect('back')
+        }
+        return view.render('admin.blog.show', {row: row.toJSON(), title: "Blog"})
+    }
+
+    async edit({response, view, request, session}) {
+        let id = request.params.id;
+        let row = await BlogRepo.model.find(id);
+        if (row == null) {
+            await session.flash({error: 'blog not found'})
+            return response.redirect('back')
+        }
+       
+        return view.render('admin.blog.edit', {
+            row: row.toJSON(),
+            title: "Edit Blog"
+        })
+    }
+
+    async update({response, view, request, session}) {
+     const input = request.only(BlogRepo.model.fillable)
+        let res = await BlogRepo.update(request.params.id, input)
+        if (!res){
+            await session.flash({error: 'Record not found'})
+            return response.redirect('back')
+        }else{
+            await session.flash({success: 'Record updated successfully!'})
+            return response.redirect('/admin/blogs');
+        }
+    }
+
+    async destroy({response, request, session}) {
+        let id = request.params.id;
+        let row = await BlogRepo.model.find(id);
+        if (row == null) {
+            await session.flash({error: 'blog not found'})
+            return response.redirect('back')
+        }
+        await row.delete();
+        await session.flash({success: 'blog Deleted Successfully!'})
+        return response.redirect('/admin/blogs')
+    }
+
+}
+
+module.exports = BlogController

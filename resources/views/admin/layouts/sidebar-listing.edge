@@ -32,3 +32,15 @@
 
 
 
+
+
+<!--Blog-->
+<li class="nav-item has-treeview menu-open">
+    <a href="{{baseUrl('admin/blogs')}}"
+       class="nav-link {{ request.match(['/admin/blogs','/admin/edit-blog/:id','/admin/blog/:id','/admin/blog']) ? 'active': '' }}">
+        <i class="nav-icon fas fa-bullhorn"></i>
+        <p>
+            Blog
+        </p>
+    </a>
+</li>

@@ -1,0 +1,51 @@
+@layout('admin.layouts.app')
+@section('css')
+    @super
+@endsection
+@section('actions')
+    @super
+    <div class="btn-group" style="margin-top: -10px;">
+
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+            Action
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{baseUrl('admin/blogs')}}">
+                <i class="fas fa-arrow-left"></i> Back</a>
+        </div>
+
+    </div>
+@endsection
+@section('content')
+    <section class="content">
+        <div class="container-fluid">
+            @if(flashMessage('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ flashMessage('error') }}
+                </div>
+            @elseif(flashMessage('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ flashMessage('success') }}
+                </div>
+            @endif
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="{{baseUrl('admin/blog/')+row.id+"?_method=PUT"}}" method="POST"
+                                  enctype="multipart/form-data">
+                                {{ csrfField() }}
+                                <div class="row">
+                                    @include('admin.blog.fields')
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+@section('scripts')
+    @super
+@endsection

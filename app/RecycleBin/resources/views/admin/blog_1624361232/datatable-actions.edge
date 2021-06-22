@@ -1,0 +1,11 @@
+<tr><td>
+        <form action="{{baseUrl('admin/delete-blog/')+row.id}}" method="GET">
+            <a href="{{baseUrl('admin/blog/')+row.id}}" class="btn btn-primary"><i
+                        class="fas fa-eye"></i></a>
+            <a href="{{baseUrl('admin/edit-blog/')+row.id}}" class="btn btn-info"><i
+                        class="fas fa-edit"></i></a>
+            <a href="#" class="delete-btn btn btn-danger"><i
+                        class="fas fa-trash-alt"></i></a>
+        </form>
+    </td>
+</tr>

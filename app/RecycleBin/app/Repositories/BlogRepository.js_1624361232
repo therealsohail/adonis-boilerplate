@@ -1,0 +1,65 @@
+'use strict'
+const {ioc} = require('@adonisjs/fold')
+const BaseRepository = use('App/Repositories/_BaseRepository')
+const Config = use('Config')
+
+class BlogRepository extends BaseRepository {
+    model
+
+    constructor(model) {
+        super(model)
+        this.model = model
+    }
+
+    async index(offset = 1, limit = Config.get('constants.limit'), orderBy = 'id', sortBy = 'desc') {
+        return await this.model.query().orderBy(orderBy, sortBy).paginate(parseInt(offset), parseInt(limit))
+    }
+
+    async show(id) {
+        return await this.model.find(id)
+    }
+
+    async store(input, request = null) {
+        if (request && request.file('media')) {
+            const file = request.file('media', {types: ['media']})
+            input.media = await myHelpers.uploadFile(file, 'users/')
+        }
+        return await this.model.create(input);
+    }
+
+    async update(id, input, request = null) {
+        let modelObj = await this.model.find(id)
+
+        //check if the row related to this id exists
+        if (!modelObj) {
+            return null
+        }
+
+        /*FILE UPLOAD*/
+        if (request && request.file('media')) {
+            const file = request.file('media', {types: ['media']})
+            input.image = await myHelpers.uploadFile(file, 'users/')
+        }
+
+        //assigning input data in db fields
+        await this.model.query().where({id}).update(input)
+        return await this.model.find(id)
+    }
+
+    async destroy(id){
+        let modelObj = await this.model.find(id)
+
+        //check if the row related to this id exists
+        if (modelObj) {
+            return await modelObj.delete()
+        }
+    }
+
+}
+
+ioc.singleton('BlogRepository', function (app) {
+    const model = app.use(Config.get('constants.modelPath') + 'Blog')
+    return new BlogRepository(model)
+})
+
+module.exports = ioc.use('BlogRepository')
